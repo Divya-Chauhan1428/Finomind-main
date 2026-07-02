@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinoMind — About Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root{
+        --cyan:#00AEEF;
+        --teal:#007B9E;
+        --dark-teal:#1A5276;
+        --cloud-cyan:#E0F7FC;
+        --off-white:#F7FAFB;
+        --charcoal:#2C3E50;
+        --slate:#4A6274;
+        --orange:#FF6B35;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+        height: auto;
+        width: 99%;
+        margin:0;
+        font-family:'Inter',sans-serif;
+        background:var(--off-white);
+        color:var(--charcoal);
+    }
+
+    /* ================= HERO ================= */
+    #hero{
+        background:linear-gradient(to right, rgba(26,82,117,1) 0%, #165d93 22%, rgba(26,82,117,1) 100%);
+        height: 80vh;
+        width: 98%;
+        border-radius: 18px;
+        margin:15px 10px;
+        position:relative;
+        overflow:hidden;
+        display:flex;
+        align-items:center;
+    }
+
+    #notch{
+        position:absolute;
+        top:0;
+        left:50%;
+        transform:translateX(-50%);
+        width:600px;
+        height:50px;
+        background:#fff;
+        border-radius:0 0 28px 28px;
+        z-index:10;
+    }
+
+    #notch::before{
+        content:"";
+        position:absolute;
+        left:-28px;
+        top:0px;
+        width:28px;
+        height:28px;
+        border-top-right-radius:28px;
+        box-shadow:14px -14px 0 14px #fff;
+    }
+
+    #notch::after{
+        content:"";
+        position:absolute;
+        right:-28px;
+        top:0;
+        width:28px;
+        height:28px;
+        border-top-left-radius:28px;
+        box-shadow:-14px -14px 0 14px #fff;
+    }
+
+    #notch ul{
+        display: flex;
+        align-items:center;
+        justify-content:center;
+        gap: 35px;
+        height:100%;
+        margin:0;
+        padding:0;
+    }
+
+    #notch ul li{
+        list-style-type: none;
+        margin-left: 0px;
+        margin-top: 0px;
+        font-size: 15px;
+        font-weight:600;
+        font-family:'Inter',sans-serif;
+        color:var(--charcoal);
+        cursor:pointer;
+        transition:color .2s ease, opacity .2s ease;
+    }
+
+    #notch ul li:hover{ color:var(--dark-teal); }
+    #notch ul li.active{ color:var(--dark-teal); }
+
+    #notch ul li img{
+        width: 100px;
+        height: auto;
+        margin-top: 0px;
+        display:block;
+    }
+
+    #hero-content{
+        position:relative;
+        z-index:5;
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        width:100%;
+        padding:80px 0px 40px;
+        gap:40px;
+    }
+
+    #hero-text{ width:55%; }
+
+    .eyebrow{
+        font-size:13px;
+        font-weight:600;
+        letter-spacing:0.22em;
+        text-transform:uppercase;
+        color:var(--cyan);
+        margin-bottom:20px;
+        display:flex;
+        align-items:center;
+        gap:12px;
+    }
+    .eyebrow::before{
+        content:'';
+        width:22px;
+        height:1px;
+        background:var(--cyan);
+        display:inline-block;
+    }
+
+    .headline{
+        font-family:'Playfair Display',serif;
+        font-weight:600;
+        font-size:clamp(38px, 4.6vw, 60px);
+        line-height:1.1;
+        color:#fff;
+        letter-spacing:-0.015em;
+        margin:0 0 22px;
+    }
+
+    .headline em{
+        font-style:normal;
+        font-weight:600;
+        color:var(--dark-teal);
+        background:#fff;
+        padding:2px 14px;
+        border-radius:8px;
+        display:inline-block;
+    }
+
+    .subtext{
+        font-size:15px;
+        line-height:1.65;
+        color:rgba(255,255,255,0.8);
+        max-width:440px;
+        margin:0 0 32px;
+    }
+
+    .cta{
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+        background:var(--orange);
+        color:#fff;
+        text-decoration:none;
+        font-size:15px;
+        font-weight:600;
+        padding:15px 30px;
+        border-radius:999px;
+        transition:background .25s ease, transform .25s ease;
+        border:none;
+        cursor:pointer;
+    }
+    .cta:hover{background:#FF8555; transform:translateY(-1px);}
+    .cta svg{width:16px;height:16px;transition:transform .25s ease;}
+    .cta:hover svg{transform:translateX(3px);}
+
+    #hero-image{
+        position:relative;
+        flex-shrink:0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        height:auto;
+        width: 44%;
+        overflow:visible;
+    }
+
+    img.hero-photo{
+        position:relative;
+        z-index:1;
+        width:90%;
+        max-width:none;
+        height:100%;
+        object-fit:contain;
+        transform:none;
+        transform-origin:left bottom;
+        filter:drop-shadow(0 20px 28px rgba(0,0,0,0.3));
+        max-height: 70vh;
+    }
+
+    /* ================= SHARED SECTION RULES ================= */
+    section{
+        width:98%;
+        margin:0 auto;
+        padding:30px 40px;
+    }
+
+    .section-eyebrow{
+        font-size:13px;
+        font-weight:600;
+        letter-spacing:0.22em;
+        text-transform:uppercase;
+        color:var(--teal);
+        margin-bottom:18px;
+        display:flex;
+        align-items:center;
+        gap:12px;
+    }
+    .section-eyebrow::before{
+        content:'';
+        width:22px;
+        height:1px;
+        background:var(--teal);
+        display:inline-block;
+    }
+
+    .section-headline{
+        font-family:'Playfair Display',serif;
+        font-weight:600;
+        font-size:clamp(30px, 3.4vw, 44px);
+        line-height:1.18;
+        color:var(--dark-teal);
+        letter-spacing:-0.01em;
+        margin:0 0 20px;
+        max-width:640px;
+    }
+
+    /* ================= OUR STORY ================= */
+    #story{ padding-top:30px; }
+
+    #story-content{
+        display:flex;
+        align-items:center;
+        gap:70px;
+    }
+
+    #story-text{ width:52%; }
+
+    #story-text p{
+        font-size:16px;
+        line-height:1.75;
+        color:var(--slate);
+        margin:0 0 18px;
+    }
+
+    #story-text p:last-child{ margin-bottom:0; }
+
+    #story-visual{
+        width:48%;
+        background:var(--dark-teal);
+        border-radius:20px;
+        padding:48px 40px;
+        position:relative;
+        overflow:hidden;
+    }
+
+    #story-visual svg{ width:100%; height:auto; display:block; }
+
+    .visual-caption{
+        margin-top:24px;
+        font-size:13px;
+        line-height:1.6;
+        color:rgba(255,255,255,0.65);
+        text-align:center;
+    }
+
+    /* ================= VALUES (4-column, not 3) ================= */
+    #values{ background:var(--cloud-cyan); border-radius:20px; width:98%; margin:0 auto; }
+
+    #values-header{ max-width:640px; margin:0 auto 60px; text-align:left; }
+
+    #values-grid{
+        display:grid;
+        grid-template-columns:repeat(4, 1fr);
+        gap:28px;
+    }
+
+    .value-card{
+        background:#fff;
+        border-radius:16px;
+        padding:32px 26px;
+        border:1px solid rgba(0,123,158,0.12);
+    }
+
+    .value-number{
+        font-family:'Playfair Display',serif;
+        font-size:15px;
+        font-weight:600;
+        color:var(--cyan);
+        margin-bottom:18px;
+    }
+
+    .value-title{
+        font-size:17px;
+        font-weight:700;
+        color:var(--dark-teal);
+        margin:0 0 10px;
+    }
+
+    .value-desc{
+        font-size:14px;
+        line-height:1.6;
+        color:var(--slate);
+        margin:0;
+    }
+
+    /* ================= STATS BAR (4-column) ================= */
+    #stats{
+        background:linear-gradient(to right, var(--dark-teal), var(--teal));
+        border-radius:20px;
+        width:98%;
+        margin:40px auto;
+        padding:64px 40px;
+    }
+
+    #stats-grid{
+        display:grid;
+        grid-template-columns:repeat(4, 1fr);
+        gap:20px;
+        text-align:center;
+    }
+
+    .stat-number{
+        font-family:'Playfair Display',serif;
+        font-size:clamp(30px, 3vw, 42px);
+        font-weight:600;
+        color:#fff;
+        margin:0 0 8px;
+    }
+
+    .stat-label{
+        font-size:13px;
+        letter-spacing:0.04em;
+        color:rgba(255,255,255,0.75);
+        margin:0;
+    }
+
+    .stat-divider{
+        width:1px;
+        background:rgba(255,255,255,0.18);
+    }
+
+    /* ================= DIFFERENTIATORS ================= */
+    #differentiators-content{
+        display:flex;
+        gap:70px;
+        align-items:flex-start;
+    }
+
+    #diff-text{ width:38%; position:sticky; top:40px; }
+
+    #diff-text p{
+        font-size:16px;
+        line-height:1.75;
+        color:var(--slate);
+    }
+
+    #diff-list{ width:62%; }
+
+    .diff-row{
+        display:flex;
+        gap:20px;
+        padding:26px 0;
+        border-bottom:1px solid rgba(74,98,116,0.15);
+    }
+
+    .diff-row:first-child{ padding-top:0; }
+    .diff-row:last-child{ border-bottom:none; }
+
+    .diff-mark{
+        flex-shrink:0;
+        width:32px;
+        height:32px;
+        border-radius:50%;
+        background:var(--cloud-cyan);
+        color:var(--teal);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:14px;
+    }
+
+    .diff-copy h3{
+        font-size:16px;
+        font-weight:700;
+        color:var(--dark-teal);
+        margin:0 0 6px;
+    }
+
+    .diff-copy p{
+        font-size:14.5px;
+        line-height:1.65;
+        color:var(--slate);
+        margin:0;
+    }
+
+    /* ================= FINAL CTA ================= */
+    #cta-final{
+        background:var(--charcoal);
+        border-radius:20px;
+        width:98%;
+        margin:0 auto 40px;
+        padding:80px 40px;
+        text-align:center;
+    }
+
+    #cta-final .section-headline{
+        color:#fff;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+    }
+
+    #cta-final p{
+        font-size:15px;
+        color:rgba(255,255,255,0.7);
+        max-width:480px;
+        margin:0 auto 34px;
+        line-height:1.65;
+    }
+
+    /* ================= FOOTER ================= */
+    #site-footer{
+        background:#131824;
+        width:100vw;
+        position:relative;
+        left:50%;
+        right:50%;
+        margin-left:-50vw;
+        margin-right:-50vw;
+        border-radius:0;
+        padding:64px 48px 28px;
+        color:rgba(255,255,255,0.65);
+    }
+
+    #footer-top{
+        display:flex;
+        justify-content:space-between;
+        gap:40px;
+        flex-wrap:wrap;
+        padding-bottom:48px;
+    }
+
+    #footer-brand{ max-width:320px; }
+
+    .footer-logo-img{
+        height:40px;
+        width:auto;
+        display:block;
+        margin:0 0 18px;
+    }
+
+    .footer-logo{
+        font-family:'Playfair Display',serif;
+        font-weight:600;
+        font-size:26px;
+        color:#fff;
+        margin:0 0 18px;
+        letter-spacing:-0.01em;
+    }
+    .footer-logo span{ color:var(--cyan); }
+
+    .footer-tagline{
+        font-size:14px;
+        line-height:1.7;
+        color:rgba(255,255,255,0.55);
+        margin:0;
+    }
+
+    #footer-links{
+        display:flex;
+        gap:80px;
+        flex-wrap:wrap;
+    }
+
+    .footer-col h4{
+        font-size:13px;
+        font-weight:700;
+        letter-spacing:0.14em;
+        text-transform:uppercase;
+        color:#fff;
+        margin:0 0 22px;
+    }
+
+    .footer-col ul{
+        list-style:none;
+        margin:0;
+        padding:0;
+        display:flex;
+        flex-direction:column;
+        gap:14px;
+    }
+
+    .footer-col ul li a{
+        color:rgba(255,255,255,0.6);
+        text-decoration:none;
+        font-size:14.5px;
+        transition:color .2s ease;
+    }
+
+    .footer-col ul li a:hover{ color:var(--cyan); }
+    .footer-col ul li a.highlight{ color:var(--cyan); }
+
+    #footer-bottom{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        gap:16px;
+        padding-top:26px;
+        border-top:1px solid rgba(255,255,255,0.09);
+    }
+
+    #footer-bottom p{
+        margin:0;
+        font-size:13.5px;
+        color:rgba(255,255,255,0.45);
+    }
+
+    #footer-social{
+        display:flex;
+        gap:12px;
+    }
+
+    #footer-social a{
+        width:38px;
+        height:38px;
+        border-radius:50%;
+        background:rgba(255,255,255,0.06);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:rgba(255,255,255,0.75);
+        transition:background .2s ease, color .2s ease;
+    }
+    #footer-social a:hover{ background:var(--cyan); color:#131824; }
+    #footer-social svg{ width:17px; height:17px; }
+
+    @media (max-width:900px){
+        #site-footer{ width:100vw; padding:48px 24px 24px; border-radius:0; }
+        #footer-links{ gap:40px; }
+        #footer-bottom{ flex-direction:column; align-items:flex-start; }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 900px){
+        #hero{height:auto; min-height:520px; margin:10px auto; width:96%;}
+        #notch{width:92%; max-width:420px; height:44px;}
+        #notch ul{gap:14px;}
+        #notch ul li{font-size:12px;}
+        #notch ul li img{width:70px;}
+        #hero-content{ flex-direction:column; text-align:center; padding:70px 24px 40px; }
+        #hero-text{width:100%; max-width:100%;}
+        .subtext{margin-left:auto;margin-right:auto;}
+        .eyebrow{justify-content:center;}
+        #hero-image{margin-top:20px; width:70%; height:auto;}
+        img.hero-photo{width:100%; transform:none;}
+
+        section{ padding:60px 22px; }
+        #story-content{ flex-direction:column; }
+        #story-text, #story-visual{ width:100%; }
+        #values-grid{ grid-template-columns:repeat(2, 1fr); }
+        #stats-grid{ grid-template-columns:repeat(2, 1fr); gap:36px; }
+        #differentiators-content{ flex-direction:column; gap:34px; }
+        #diff-text, #diff-list{ width:100%; position:static; }
+    }
+</style>
+</head>
+<body>
+
+    <div id="hero">
+        <div id="notch">
+            <ul>
+                <li><a href="index.html" style="color: inherit; text-decoration: none;">Home</a></li>
+                <li><a href="service.html" style="color: inherit; text-decoration: none;">Services</a></li>
+                <li>
+                    <a href="index.html" style="color: inherit; text-decoration: none;"><img src="./hub-center.png" alt="FinoMind"></a>
+                </li>
+                <li class="active"><a href="about-us.html" style="color: inherit; text-decoration: none;">About Us</a></li>
+                <li><a href="guide.html" style="color: inherit; text-decoration: none;">Guide</a></li>
+            </ul>
+        </div>
+
+        <div id="hero-content">
+            <div id="hero-image">
+                <img class="hero-photo" src="./ChatGPT Image Jul 2, 2026, 09_58_31 AM (1).png" alt="FinoMind advisor">
+            </div>
+            <div id="hero-text">
+                <div class="eyebrow">About Us</div>
+                <h1 class="headline">Trust, <em>translated.</em></h1>
+                <p class="subtext">Independent consultants who speak your language — literally and financially.</p>
+                <a href="#" class="cta">Meet our team
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= OUR STORY ================= -->
+    <section id="story">
+        <div id="story-content">
+            <div id="story-text">
+                <div class="section-eyebrow">Our Story</div>
+                <h2 class="section-headline">Built for people living in two ledgers.</h2>
+                <p>FinoMind started with a simple frustration: every advisor we spoke to understood one system, never both. One would optimise our Indian ITR and quietly ignore what it did to our Elster return. Another would sort our German taxes and have no idea what an NRE account was for.</p>
+                <p>We built the firm we were looking for — one that reads Form 67 and Anlage AUS in the same sitting, and treats DTAA as the starting point of a plan, not a footnote to it.</p>
+                <p>Today, FinoMind works exclusively with Indian professionals building a life in Germany, across six areas — from real estate to legacy planning — with one strategy connecting all of them.</p>
+            </div>
+            <div id="story-visual">
+                <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#00AEEF"/>
+                            <stop offset="100%" stop-color="#FF6B35"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="6" fill="#00AEEF"/>
+                    <text x="60" y="40" fill="#ffffff" font-family="Inter" font-size="13" font-weight="600" text-anchor="middle">India</text>
+                    <text x="60" y="90" fill="rgba(255,255,255,0.55)" font-family="Inter" font-size="11" text-anchor="middle">NRE / NRO · DTAA</text>
+
+                    <circle cx="340" cy="160" r="6" fill="#FF6B35"/>
+                    <text x="340" y="140" fill="#ffffff" font-family="Inter" font-size="13" font-weight="600" text-anchor="middle">Germany</text>
+                    <text x="340" y="190" fill="rgba(255,255,255,0.55)" font-family="Inter" font-size="11" text-anchor="middle">Elster · Steuerklasse</text>
+
+                    <path d="M 60 66 C 140 66, 140 154, 200 110 C 260 66, 260 154, 340 154" stroke="url(#lineGrad)" stroke-width="2.5" fill="none"/>
+                    <circle cx="200" cy="110" r="7" fill="#ffffff"/>
+                    <text x="200" y="88" fill="#ffffff" font-family="Playfair Display" font-size="13" font-weight="600" text-anchor="middle">FinoMind</text>
+                </svg>
+                <p class="visual-caption">One strategy, plotted across both systems — not two advisors working in parallel.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= VALUES ================= -->
+    <section id="values">
+        <div id="values-header">
+            <div class="section-eyebrow">What We Stand For</div>
+            <h2 class="section-headline">Four principles we don't negotiate on.</h2>
+        </div>
+        <div id="values-grid">
+            <div class="value-card">
+                <div class="value-number">01</div>
+                <h3 class="value-title">Independent by design</h3>
+                <p class="value-desc">No commissions from banks or funds. Every recommendation is backed by DTAA math, not a product incentive.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-number">02</div>
+                <h3 class="value-title">Dual-market fluency</h3>
+                <p class="value-desc">We track Indian and German tax changes in the same week they happen — not months apart.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-number">03</div>
+                <h3 class="value-title">Plain-language transparency</h3>
+                <p class="value-desc">Every report is written so you understand your own finances — no jargon left unexplained.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-number">04</div>
+                <h3 class="value-title">Partnership, not paperwork</h3>
+                <p class="value-desc">We plan in decades — your career moves, your family's move, your eventual return, if any.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATS ================= -->
+    <section id="stats" style="padding-top:64px; padding-bottom:64px;">
+        <div id="stats-grid">
+            <div>
+                <p class="stat-number">12+</p>
+                <p class="stat-label">Years bridging India–Germany finance</p>
+            </div>
+            <div>
+                <p class="stat-number">480+</p>
+                <p class="stat-label">Professionals advised across Germany</p>
+            </div>
+            <div>
+                <p class="stat-number">2</p>
+                <p class="stat-label">Tax systems, one coordinated strategy</p>
+            </div>
+            <div>
+                <p class="stat-number">6</p>
+                <p class="stat-label">Service pillars under one roof</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= DIFFERENTIATORS ================= -->
+    <section id="differentiators">
+        <div id="differentiators-content">
+            <div id="diff-text">
+                <div class="section-eyebrow">Why FinoMind</div>
+                <h2 class="section-headline">What changes when your advisor sees both sides.</h2>
+                <p>Most gaps in an NRI's financial life aren't caused by bad advice — they're caused by advice that only accounts for half the picture.</p>
+            </div>
+            <div id="diff-list">
+                <div class="diff-row">
+                    <div class="diff-mark">✓</div>
+                    <div class="diff-copy">
+                        <h3>Your Steuerklasse informs your NRE/NRO structure — not the other way around</h3>
+                        <p>We size Indian account structures around what your German tax class already commits you to, so nothing is restructured twice.</p>
+                    </div>
+                </div>
+                <div class="diff-row">
+                    <div class="diff-mark">✓</div>
+                    <div class="diff-copy">
+                        <h3>DTAA credit claimed correctly, every filing season</h3>
+                        <p>Form 67 and Anlage AUS get filed as a matched pair, so tax paid in one country isn't paid again in the other.</p>
+                    </div>
+                </div>
+                <div class="diff-row">
+                    <div class="diff-mark">✓</div>
+                    <div class="diff-copy">
+                        <h3>One point of contact, both countries</h3>
+                        <p>You're not juggling a CA in Mumbai and a Steuerberater in Munich who've never spoken to each other.</p>
+                    </div>
+                </div>
+                <div class="diff-row">
+                    <div class="diff-mark">✓</div>
+                    <div class="diff-copy">
+                        <h3>Plans built for the decade, not the deadline</h3>
+                        <p>Real estate, legacy planning, and capital strategy are sequenced together, so this year's filing doesn't undo next year's plan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <section id="cta-final">
+        <h2 class="section-headline">Ready to make your money borderless?</h2>
+        <p>Talk to a consultant who already speaks both languages — no translation needed on either side.</p>
+        <a href="#" class="cta">Meet our team
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="site-footer">
+        <div id="footer-top">
+            <div id="footer-brand">
+                <img src="./hub-center.png" alt="FinoMind logo" class="footer-logo-img">
+                <p class="footer-tagline">Smart Wealth, Clear Direction.<br>Germany's premier financial advisory for the Indian community in Europe.</p>
+            </div>
+
+            <div id="footer-links">
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Real Estate Investment</a></li>
+                        <li><a href="#">ALLFinance+</a></li>
+                        <li><a href="#">Tax &amp; Retirement</a></li>
+                        <li><a href="#" class="highlight">Fund &amp; ETF Strategy</a></li>
+                        <li><a href="#">Insurance &amp; Protection</a></li>
+                        <li><a href="#">India &harr; Germany Bridge</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Why FinoMind</a></li>
+                        <li><a href="#">Our Process</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:hello@finomind.de">hello@finomind.de</a></li>
+                        <li><a href="#">Frankfurt, Germany</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Impressum</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-bottom">
+            <p>&copy; 2025 FinoMind GmbH. All rights reserved. Registered in Germany.</p>
+            <div id="footer-social">
+                <a href="#" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.12 1 2.49 1s2.49 1.12 2.49 2.5zM.24 8.25h4.5V23H.24V8.25zM8.02 8.25h4.31v2.01h.06c.6-1.14 2.07-2.34 4.26-2.34 4.55 0 5.39 3 5.39 6.9V23h-4.5v-6.88c0-1.64-.03-3.75-2.29-3.75-2.29 0-2.64 1.79-2.64 3.63V23h-4.5V8.25z"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.44 4.83c-.8.36-1.67.6-2.58.71a4.5 4.5 0 0 0 1.98-2.48 9 9 0 0 1-2.85 1.09 4.48 4.48 0 0 0-7.64 4.09A12.72 12.72 0 0 1 3.03 3.6a4.48 4.48 0 0 0 1.39 5.98c-.73-.02-1.42-.22-2.02-.56v.06a4.48 4.48 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2.02.08 4.49 4.49 0 0 0 4.19 3.12A9 9 0 0 1 1 19.54a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.78 0-.2 0-.39-.01-.58a9.14 9.14 0 0 0 2.24-2.32z"/></svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.87 5.87 0 0 0-2.13 1.38A5.87 5.87 0 0 0 .63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.13-1.38 5.87 5.87 0 0 0 1.38-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.38-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.41-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.6 15.5v-7l6.24 3.5-6.24 3.5z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

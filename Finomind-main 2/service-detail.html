@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FinoMind — Service Detail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cyan:#00AEEF;
+    --teal:#007B9E;
+    --dark-teal:#1A5276;
+    --cloud-cyan:#E0F7FC;
+    --off-white:#F7FAFB;
+    --charcoal:#2C3E50;
+    --slate:#4A6274;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    font-family:'Inter',sans-serif;
+    background:#FFFFFF;
+    color:var(--charcoal);
+  }
+
+  a{color:inherit;}
+
+  /* ---------- TOP NAV ---------- */
+  .site-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 48px;
+    border-bottom:1px solid rgba(0,123,158,0.14);
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    z-index:10;
+  }
+
+  .brand{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:20px;
+    color:var(--dark-teal);
+    text-decoration:none;
+    letter-spacing:0.3px;
+  }
+  .brand span{color:var(--cyan);}
+
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--teal);
+    text-decoration:none;
+    padding:8px 16px;
+    border:1px solid rgba(0,123,158,0.28);
+    border-radius:999px;
+    transition:background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    background:none;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .back-link:hover{
+    background:var(--dark-teal);
+    border-color:var(--dark-teal);
+    color:#FFFFFF;
+  }
+  .back-link svg{width:16px;height:16px;transition:transform 0.25s ease;}
+  .back-link:hover svg{transform:translateX(-3px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:72px 48px 56px;
+    max-width:1080px;
+    margin:0 auto;
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-140px;
+    right:-160px;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(0,174,239,0.14) 0%, rgba(0,174,239,0) 70%);
+    pointer-events:none;
+  }
+
+  .hero-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    letter-spacing:2.6px;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  .hero-eyebrow .crumb-sep{opacity:0.4;font-weight:400;}
+  .hero-eyebrow .crumb-current{color:var(--dark-teal);}
+
+  .hero-top{
+    display:flex;
+    align-items:flex-start;
+    gap:26px;
+  }
+
+  .hero-badge{
+    flex-shrink:0;
+    width:74px;
+    height:74px;
+    border-radius:20px;
+    background:linear-gradient(150deg, var(--cloud-cyan), #FFFFFF);
+    border:1px solid rgba(0,123,158,0.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--teal);
+    box-shadow:0 18px 34px rgba(26,82,118,0.10);
+    animation:badgeIn 0.6s ease;
+  }
+  .hero-badge svg{width:34px;height:34px;}
+
+  @keyframes badgeIn{
+    from{opacity:0;transform:translateY(-8px) scale(0.9);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+  }
+
+  .hero-title{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:clamp(34px,5vw,54px);
+    color:var(--dark-teal);
+    line-height:1.08;
+    margin-bottom:14px;
+    animation:riseIn 0.6s ease 0.1s backwards;
+  }
+
+  .hero-tagline{
+    font-size:19px;
+    line-height:1.6;
+    color:var(--slate);
+    max-width:640px;
+    animation:riseIn 0.6s ease 0.18s backwards;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .hero-cta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:32px;
+    animation:riseIn 0.6s ease 0.26s backwards;
+  }
+
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    background:var(--dark-teal);
+    color:#FFFFFF;
+    font-weight:600;
+    font-size:14.5px;
+    border-radius:999px;
+    text-decoration:none;
+    transition:background 0.3s ease, gap 0.3s ease;
+  }
+  .btn-primary:hover{background:var(--cyan);gap:12px;}
+
+  .btn-secondary{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 26px;
+    background:none;
+    border:1px solid rgba(0,123,158,0.3);
+    color:var(--dark-teal);
+    font-weight:600;
+    font-size:14.5px;
+    border-radius:999px;
+    text-decoration:none;
+    transition:border-color 0.3s ease, background 0.3s ease;
+  }
+  .btn-secondary:hover{border-color:var(--dark-teal);background:var(--cloud-cyan);}
+
+  /* ---------- MAIN CONTENT GRID ---------- */
+  .content-wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:8px 48px 100px;
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:56px;
+  }
+
+  .main-col section{margin-bottom:52px;}
+  .main-col section:last-child{margin-bottom:0;}
+
+  .section-label{
+    font-size:12px;
+    letter-spacing:2.2px;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:700;
+    margin-bottom:14px;
+    display:block;
+  }
+
+  .section-heading{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:26px;
+    color:var(--dark-teal);
+    margin-bottom:16px;
+  }
+
+  .overview-text{
+    font-size:16.5px;
+    line-height:1.75;
+    color:var(--slate);
+  }
+  .overview-text + .overview-text{margin-top:14px;}
+
+  /* feature list */
+  .feature-list{
+    list-style:none;
+    display:grid;
+    gap:16px;
+  }
+  .feature-item{
+    display:flex;
+    gap:16px;
+    padding:20px;
+    background:var(--off-white);
+    border:1px solid rgba(0,123,158,0.12);
+    border-radius:14px;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .feature-item:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 28px rgba(26,82,118,0.08);
+    border-color:rgba(0,174,239,0.35);
+  }
+  .feature-icon{
+    flex-shrink:0;
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:var(--cloud-cyan);
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .feature-icon svg{width:19px;height:19px;}
+  .feature-title{
+    font-weight:700;
+    font-size:15.5px;
+    color:var(--charcoal);
+    margin-bottom:4px;
+  }
+  .feature-desc{
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--slate);
+  }
+
+  /* process steps */
+  .process-rail{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .process-step{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:18px;
+    position:relative;
+    padding-bottom:28px;
+  }
+  .process-step:last-child{padding-bottom:0;}
+  .step-marker{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    background:var(--dark-teal);
+    color:#FFFFFF;
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    z-index:1;
+  }
+  .process-step:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    left:21px;
+    top:44px;
+    bottom:0;
+    width:2px;
+    background:repeating-linear-gradient(to bottom, rgba(0,123,158,0.28) 0 4px, transparent 4px 9px);
+  }
+  .step-title{
+    font-weight:700;
+    font-size:16px;
+    color:var(--charcoal);
+    margin-bottom:4px;
+    padding-top:8px;
+  }
+  .step-desc{
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--slate);
+  }
+
+  /* who it's for */
+  .audience-grid{
+    display:grid;
+    gap:12px;
+  }
+  .audience-item{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    font-size:15.5px;
+    line-height:1.55;
+    color:var(--slate);
+  }
+  .audience-item svg{
+    flex-shrink:0;
+    width:20px;
+    height:20px;
+    color:var(--cyan);
+    margin-top:2px;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+
+  .side-card{
+    background:#FFFFFF;
+    border:1px solid rgba(0,123,158,0.16);
+    border-radius:16px;
+    padding:26px;
+    box-shadow:0 16px 32px rgba(26,82,118,0.06);
+  }
+
+  .side-card-title{
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:700;
+    margin-bottom:16px;
+  }
+
+  .term-chip{
+    display:inline-block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--dark-teal);
+    background:var(--cloud-cyan);
+    padding:6px 12px;
+    border-radius:8px;
+    margin:0 8px 8px 0;
+  }
+
+  .cta-card{
+    background:linear-gradient(155deg, var(--dark-teal), var(--teal));
+    color:#FFFFFF;
+    border-radius:16px;
+    padding:28px 24px;
+  }
+  .cta-card h3{
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+    margin-bottom:10px;
+  }
+  .cta-card p{
+    font-size:14px;
+    line-height:1.6;
+    opacity:0.92;
+    margin-bottom:18px;
+  }
+  .cta-card .btn-primary{
+    background:#FFFFFF;
+    color:var(--dark-teal);
+    width:100%;
+    justify-content:center;
+  }
+  .cta-card .btn-primary:hover{background:var(--cloud-cyan);}
+
+  .other-services-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .other-service-link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 8px;
+    border-radius:10px;
+    text-decoration:none;
+    color:var(--charcoal);
+    font-size:14.5px;
+    font-weight:600;
+    transition:background 0.2s ease, padding-left 0.2s ease;
+  }
+  .other-service-link:hover{
+    background:var(--cloud-cyan);
+    padding-left:14px;
+  }
+  .other-service-link .mini-badge{
+    flex-shrink:0;
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    background:var(--cloud-cyan);
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .other-service-link .mini-badge svg{width:15px;height:15px;}
+
+  @media (max-width:860px){
+    .content-wrap{grid-template-columns:1fr;}
+    .site-nav{padding:18px 24px;}
+    .hero{padding:44px 24px 40px;}
+    .hero-top{gap:18px;}
+    .hero-badge{width:60px;height:60px;border-radius:16px;}
+    .hero-badge svg{width:28px;height:28px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-badge, .hero-title, .hero-tagline, .hero-cta-row, .feature-item{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a class="brand" href="finomind-services-radial-hub.html">Fino<span>Mind</span></a>
+  <a class="back-link" href="finomind-services-radial-hub.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Back to Services
+  </a>
+</nav>
+
+<header class="hero">
+  <div class="hero-eyebrow">
+    <a href="finomind-services-radial-hub.html" style="color:inherit;text-decoration:none;">Services</a>
+    <span class="crumb-sep">/</span>
+    <span class="crumb-current" id="crumbCurrent">Service</span>
+  </div>
+  <div class="hero-top">
+    <div class="hero-badge" id="heroBadge"></div>
+    <div>
+      <h1 class="hero-title" id="heroTitle">Service</h1>
+      <p class="hero-tagline" id="heroTagline">Loading…</p>
+    </div>
+  </div>
+  <div class="hero-cta-row">
+    <a href="#contact" class="btn-primary" id="ctaPrimary">
+      Book a consultation
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+    </a>
+    <a href="finomind-services-radial-hub.html" class="btn-secondary">See all six pillars</a>
+  </div>
+</header>
+
+<main class="content-wrap">
+  <div class="main-col">
+    <section id="overview-section">
+      <span class="section-label">Overview</span>
+      <h2 class="section-heading">What this service covers</h2>
+      <div id="overviewText"></div>
+    </section>
+
+    <section id="features-section">
+      <span class="section-label">What we help with</span>
+      <h2 class="section-heading">Where we focus</h2>
+      <ul class="feature-list" id="featureList"></ul>
+    </section>
+
+    <section id="process-section">
+      <span class="section-label">How it works</span>
+      <h2 class="section-heading">Our process</h2>
+      <div class="process-rail" id="processRail"></div>
+    </section>
+
+    <section id="audience-section">
+      <span class="section-label">Who it's for</span>
+      <h2 class="section-heading">Built for your situation</h2>
+      <div class="audience-grid" id="audienceGrid"></div>
+    </section>
+  </div>
+
+  <aside class="sidebar">
+    <div class="side-card">
+      <div class="side-card-title">Terms you'll hear</div>
+      <div id="termChips"></div>
+    </div>
+
+    <div class="cta-card" id="contact">
+      <h3>Talk it through</h3>
+      <p>A short call is enough to see whether this pillar is the right starting point for your plan.</p>
+      <a href="#" class="btn-primary" onclick="alert('This is a demo action — connect it to your booking flow.'); return false;">Book a consultation</a>
+    </div>
+
+    <div class="side-card">
+      <div class="side-card-title">Other pillars</div>
+      <ul class="other-services-list" id="otherServicesList"></ul>
+    </div>
+  </aside>
+</main>
+
+<script>
+const services = {
+  "real-estate": {
+    title: "Real Estate",
+    badge: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 L12 4 L21 11"/><path d="M5 10 V20 H19 V10"/><path d="M10 20 V14 H14 V20"/></svg>`,
+    tagline: "Property decisions that hold their value across two systems.",
+    overview: [
+      "Buying property in Germany looks nothing like buying property in India — the financing process, the taxes at closing, and the ongoing obligations all run on different rules. We help Indian professionals in Germany make sense of the local market without losing sight of any property or income they still hold back home.",
+      "Whether you're comparing a first Finanzierung offer, deciding if renting still makes more sense than buying, or working out how German and Indian tax rules apply to a property you already own, we build the numbers around your actual situation rather than a generic checklist."
+    ],
+    features: [
+      { title: "Mortgage & financing comparison", desc: "We review Finanzierung offers from multiple German lenders and translate the terms — fixed periods, Tilgung rates, Sondertilgung options — into a decision you can act on with confidence." },
+      { title: "Buy vs. rent modelling", desc: "A real comparison that accounts for Grunderwerbsteuer, notary and registration costs, maintenance reserves, and how long you actually plan to stay before either option pays off." },
+      { title: "Cross-border property income", desc: "If you still hold property in India, we structure how that rental income is reported and taxed under the India–Germany DTAA, so it isn't taxed twice." },
+      { title: "NRE/NRO account alignment", desc: "We make sure funds moving between your German accounts and NRE/NRO accounts in India are structured cleanly, with the paper trail your tax filings will need." },
+      { title: "Exit and resale planning", desc: "From Spekulationssteuer timing in Germany to capital gains treatment in India, we plan an exit strategy before you need one, not after." }
+    ],
+    process: [
+      { title: "Assess your situation", desc: "We map what you own, what you owe, and what you're trying to achieve — in Germany and in India." },
+      { title: "Model the numbers", desc: "Buy-vs-rent, financing scenarios, and tax exposure are laid out side by side so trade-offs are visible." },
+      { title: "Structure the financing", desc: "We help you compare and negotiate financing offers that fit your income and residency status." },
+      { title: "Close with confidence", desc: "We flag the closing costs and paperwork most first-time buyers in Germany don't expect." },
+      { title: "Review annually", desc: "Property tax rules and your own goals shift — we revisit the plan every year, not just at purchase." }
+    ],
+    audience: [
+      "First-time buyers navigating the German mortgage process for the first time",
+      "Professionals weighing whether renting still makes sense after several years in Germany",
+      "NRIs who still hold residential or rental property in India",
+      "Families planning a property purchase timed around a Steuerklasse or income change"
+    ],
+    terms: ["Grunderwerbsteuer", "DTAA", "NRE/NRO", "Finanzierung", "Notarkosten"]
+  },
+
+  "continental-bridge": {
+    title: "The Continental Bridge",
+    badge: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 Q12 4 20 12"/><path d="M7 18 V10"/><path d="M17 18 V10"/><path d="M3 18 H21"/></svg>`,
+    tagline: "One plan, two countries — nothing gets lost in transfer.",
+    overview: [
+      "Your finances don't stop at a border, and neither should your plan. The Continental Bridge is where we connect the German side of your life — Elster filings, Steuerklasse, local banking — with the Indian side — NRE/NRO accounts, ITR filings, and assets you may still hold there.",
+      "Most of the friction Indian professionals in Germany run into isn't about either country's rules in isolation — it's about the gap between them: money that gets taxed twice, transfers that trigger the wrong reporting, or a filing deadline in one country that quietly conflicts with another. We exist to close that gap."
+    ],
+    features: [
+      { title: "DTAA-aware tax coordination", desc: "We apply the India–Germany Double Taxation Avoidance Agreement to your actual income sources, so you're not paying tax twice on the same rupee or euro." },
+      { title: "NRE/NRO account structuring", desc: "We help you decide what stays in India, what moves to Germany, and how to keep your NRE/NRO accounts aligned with both countries' reporting rules." },
+      { title: "Elster filing support", desc: "Your German tax return doesn't happen in isolation — we coordinate it with your Indian ITR so both filings tell the same, consistent story." },
+      { title: "Cross-border transfers & timing", desc: "When and how you move money between Germany and India affects both tax treatment and exchange-rate exposure — we plan transfers, not just execute them." },
+      { title: "Steuerklasse & income planning", desc: "Your Steuerklasse affects take-home pay and withholding — we factor it into the wider plan rather than treating it as a one-time form to fill in." }
+    ],
+    process: [
+      { title: "Map both sides", desc: "We build a full picture of your income, assets, and obligations in Germany and in India." },
+      { title: "Align the filings", desc: "German and Indian tax positions are checked against each other before either is submitted." },
+      { title: "File with coordination", desc: "Elster and ITR filings are timed and structured so nothing contradicts the other." },
+      { title: "Plan transfers", desc: "We time cross-border transfers around tax treatment and currency conditions." },
+      { title: "Review each tax year", desc: "Residency status, income, and rules change — we revisit the coordination annually." }
+    ],
+    audience: [
+      "Indian professionals who've recently relocated to Germany",
+      "Anyone still receiving income or holding assets in India while living in Germany",
+      "Families sending regular remittances between the two countries",
+      "Professionals unsure whether their German and Indian filings are actually consistent"
+    ],
+    terms: ["DTAA", "Elster", "NRE/NRO", "Steuerklasse", "ITR"]
+  },
+
+  "capital-strategy": {
+    title: "Capital Strategy",
+    badge: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17 L9 12 L13 15 L18 8"/><path d="M14 8 H18.5 V12.5"/></svg>`,
+    tagline: "Portfolios built for two decades, not two quarters.",
+    overview: [
+      "Every move on the board is deliberate. Capital Strategy is where we build the investment side of your plan — how much risk you're actually comfortable carrying, how your savings are split across EUR and INR, and how that allocation should shift as your life does.",
+      "We're not chasing this quarter's best-performing fund. We're building a portfolio calibrated to your risk appetite, your timeline, and the reality that you're earning and spending across two currencies — so your capital compounds with purpose, not chance."
+    ],
+    features: [
+      { title: "Risk-calibrated portfolio design", desc: "We start with how much volatility you can actually tolerate — not a generic risk questionnaire — and build an allocation around it." },
+      { title: "Cross-currency allocation", desc: "Savings split between EUR and INR carry currency risk most people never plan for. We size and manage that exposure deliberately." },
+      { title: "ETF & index strategy", desc: "For most long-term goals, low-cost, broadly diversified index investing outperforms stock-picking — we help you build that core sensibly." },
+      { title: "Retirement horizon modelling", desc: "We factor in German retirement structures alongside your Indian savings and pension exposure, so your long-term number is realistic." },
+      { title: "Disciplined rebalancing", desc: "Markets drift and so do allocations — we set a rebalancing rhythm so your risk level stays where you intended it, not where the market pushed it." }
+    ],
+    process: [
+      { title: "Profile your risk", desc: "We establish what you can tolerate financially and emotionally, not just what a form says." },
+      { title: "Design the allocation", desc: "A portfolio structure is built around your timeline, currency exposure, and goals." },
+      { title: "Deploy capital", desc: "We phase investments in deliberately rather than making a single high-stakes decision." },
+      { title: "Rebalance on schedule", desc: "Regular check-ins keep the portfolio aligned with your original risk profile." },
+      { title: "Report in plain language", desc: "You get a clear view of performance and decisions — no jargon, no noise." }
+    ],
+    audience: [
+      "Professionals building long-term wealth for the first time in Germany",
+      "Anyone holding savings split between EUR and INR without a deliberate strategy",
+      "Investors who've outgrown ad-hoc stock picks and want a real allocation",
+      "Those planning retirement across two countries' pension systems"
+    ],
+    terms: ["DTAA", "ETF", "Steuerklasse", "FBAR"]
+  },
+
+  "asset-protection": {
+    title: "Asset Protection",
+    badge: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L20 6 V12 C20 17 16.5 20 12 21 C7.5 20 4 17 4 12 V6 Z"/><path d="M8.5 12 L11 14.5 L15.5 9"/></svg>`,
+    tagline: "A shield around what you've built — not just a spreadsheet.",
+    overview: [
+      "Wealth you've worked hard to build deserves more than a good return — it deserves protection against the things you can't predict. Asset Protection is where we structure insurance, diversification, and legal safeguards around your property, savings, and valuables.",
+      "For Indian professionals in Germany, this often means untangling insurance obligations that differ sharply from what's familiar back home, while making sure assets held across two countries aren't quietly exposed to risks neither system covers on its own."
+    ],
+    features: [
+      { title: "Insurance structuring", desc: "We review liability (Haftpflicht), household contents (Hausrat), and life coverage to close gaps without over-insuring against risks you don't actually carry." },
+      { title: "Diversification against concentration risk", desc: "Too much wealth tied to one property, one employer, or one currency is a hidden vulnerability — we spread that exposure deliberately." },
+      { title: "Legal safeguards & contracts", desc: "From property titles to power-of-attorney arrangements spanning both countries, we make sure the paperwork protects you when it matters." },
+      { title: "Emergency liquidity planning", desc: "We make sure you can access funds quickly in a crisis without being forced to sell an asset at the wrong time." }
+    ],
+    process: [
+      { title: "Audit exposure", desc: "We identify where your wealth is concentrated and what isn't currently protected." },
+      { title: "Structure coverage", desc: "Insurance and legal safeguards are matched to your actual risks — not a standard package." },
+      { title: "Put protection in place", desc: "Policies and structures are set up and coordinated across both countries." },
+      { title: "Monitor and adjust", desc: "As your assets and family situation change, we revisit what's protected and what isn't." }
+    ],
+    audience: [
+      "Property owners in Germany unfamiliar with local insurance requirements",
+      "Business owners with liability exposure that spans two countries",
+      "High-net-worth families with assets concentrated in a small number of places",
+      "Anyone who hasn't reviewed their coverage since first arriving in Germany"
+    ],
+    terms: ["Haftpflichtversicherung", "Hausratversicherung", "DTAA"]
+  },
+
+  "legacy-planning": {
+    title: "Legacy Planning",
+    badge: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4.5"/><path d="M12 12.5 V21"/><path d="M8.5 21 H15.5"/></svg>`,
+    tagline: "Wealth that outlives you, understood by the people who inherit it.",
+    overview: [
+      "Wealth is meant to travel across generations — but only if the plan behind it is clear enough for your family to follow. Legacy Planning is where we design estate and succession structures so that what you've built reaches the people you intend, wherever in the world they call home.",
+      "Cross-border inheritance is one of the most overlooked risks for Indian families in Germany: German Erbschaftsteuer, Indian succession rules, and assets scattered across NRE/NRO accounts and property can leave heirs facing confusion — or worse — at exactly the wrong moment. We plan for that in advance."
+    ],
+    features: [
+      { title: "Cross-border estate planning", desc: "We structure your estate so it holds up under both German and Indian succession rules, rather than being valid in one country and contested in the other." },
+      { title: "Inheritance tax awareness", desc: "German Erbschaftsteuer and Indian succession implications are factored in early, so your heirs aren't surprised by a tax bill they didn't plan for." },
+      { title: "Wills valid across jurisdictions", desc: "We coordinate with legal counsel to ensure your will is recognised and enforceable in both Germany and India." },
+      { title: "Beneficiary structuring", desc: "NRE/NRO accounts, German investment accounts, and property are structured with clear, documented beneficiaries in mind." },
+      { title: "Family succession conversations", desc: "We help you have the conversation with your family before it's needed — not after — so intentions are understood, not guessed at." }
+    ],
+    process: [
+      { title: "Inventory your estate", desc: "We map every asset, account, and property across both countries." },
+      { title: "Plan the structure", desc: "We design an estate plan that accounts for German and Indian rules together." },
+      { title: "Document it properly", desc: "Wills, powers of attorney, and beneficiary designations are put in writing and coordinated." },
+      { title: "Communicate with family", desc: "We help you brief the people who'll eventually act on this plan." },
+      { title: "Review as life changes", desc: "Marriage, children, and new assets all mean the plan needs revisiting." }
+    ],
+    audience: [
+      "Families with assets held in both India and Germany",
+      "Parents planning for children who may grow up or settle abroad",
+      "Anyone who hasn't updated their will since relocating to Germany",
+      "Families wanting to avoid succession disputes across jurisdictions"
+    ],
+    terms: ["Erbschaftsteuer", "DTAA", "NRE/NRO"]
+  },
+
+  "wealth-concierge": {
+    title: "Wealth Concierge",
+    badge: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 C6 11 8.5 6 12 6 C15.5 6 18 11 18 18"/><path d="M4 18 H20"/><circle cx="12" cy="4" r="1.1" fill="currentColor" stroke="none"/></svg>`,
+    tagline: "One advisor who sees the full picture — and translates it into one clear plan.",
+    overview: [
+      "Managing money across two countries usually means juggling a tax advisor, a banker, a mortgage broker, and an insurance agent — each of whom sees only their own slice of your finances. Wealth Concierge is a dedicated advisor who sees the whole picture: markets, borders, and goals.",
+      "This is the coordinating layer that sits above the other five pillars — Real Estate, The Continental Bridge, Capital Strategy, Asset Protection, and Legacy Planning — so that decisions in one area are made with full knowledge of what's happening in the others."
+    ],
+    features: [
+      { title: "Single point of contact", desc: "One advisor who knows your full situation, instead of six specialists who each know a fragment of it." },
+      { title: "Quarterly plan reviews", desc: "We revisit your whole financial picture every quarter, not just when something goes wrong." },
+      { title: "Milestone-based check-ins", desc: "Relocation, marriage, a home purchase, a new job, retirement — we check in around the moments that actually change your plan." },
+      { title: "Coordination across advisors", desc: "We work directly with your CA, tax advisor, or legal counsel in either country so nothing falls through the cracks between them." }
+    ],
+    process: [
+      { title: "Onboard your full picture", desc: "We gather everything — income, assets, obligations, and goals — in one place." },
+      { title: "Build the coordinated plan", desc: "Every pillar of your finances is considered together, not in isolation." },
+      { title: "Coordinate with your advisors", desc: "We liaise directly with your CA, tax advisor, or lawyer so instructions are consistent." },
+      { title: "Review at every milestone", desc: "We revisit the plan quarterly and whenever your life changes meaningfully." }
+    ],
+    audience: [
+      "Anyone who wants one relationship instead of six separate advisors",
+      "Professionals with a complex situation spanning property, tax, and investments",
+      "Families going through a major transition — relocation, marriage, retirement",
+      "Clients already using other FinoMind pillars who want them coordinated"
+    ],
+    terms: ["DTAA", "Steuerklasse", "NRE/NRO"]
+  }
+};
+
+const CHECK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>`;
+
+function getParam(name){
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+function render(){
+  const key = getParam('service') || 'real-estate';
+  const service = services[key] || services['real-estate'];
+  const order = Object.keys(services);
+
+  document.title = `${service.title} — FinoMind`;
+  document.getElementById('crumbCurrent').textContent = service.title;
+  document.getElementById('heroBadge').innerHTML = service.badge;
+  document.getElementById('heroTitle').textContent = service.title;
+  document.getElementById('heroTagline').textContent = service.tagline;
+
+  const overviewEl = document.getElementById('overviewText');
+  overviewEl.innerHTML = service.overview.map(p => `<p class="overview-text">${p}</p>`).join('');
+
+  const featureList = document.getElementById('featureList');
+  featureList.innerHTML = service.features.map(f => `
+    <li class="feature-item">
+      <div class="feature-icon">${CHECK_ICON}</div>
+      <div>
+        <div class="feature-title">${f.title}</div>
+        <div class="feature-desc">${f.desc}</div>
+      </div>
+    </li>
+  `).join('');
+
+  const processRail = document.getElementById('processRail');
+  processRail.innerHTML = service.process.map((step, i) => `
+    <div class="process-step">
+      <div class="step-marker">${i + 1}</div>
+      <div>
+        <div class="step-title">${step.title}</div>
+        <div class="step-desc">${step.desc}</div>
+      </div>
+    </div>
+  `).join('');
+
+  const audienceGrid = document.getElementById('audienceGrid');
+  audienceGrid.innerHTML = service.audience.map(a => `
+    <div class="audience-item">${CHECK_ICON}<span>${a}</span></div>
+  `).join('');
+
+  const termChips = document.getElementById('termChips');
+  termChips.innerHTML = service.terms.map(t => `<span class="term-chip">${t}</span>`).join('');
+
+  const otherList = document.getElementById('otherServicesList');
+  otherList.innerHTML = order.filter(k => k !== key).map(k => {
+    const s = services[k];
+    return `<li><a class="other-service-link" href="service-detail.html?service=${k}">
+      <span class="mini-badge">${s.badge}</span>
+      ${s.title}
+    </a></li>`;
+  }).join('');
+}
+
+render();
+</script>
+
+</body>
+</html>

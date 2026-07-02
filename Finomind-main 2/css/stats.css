@@ -1,0 +1,152 @@
+/* ═══════════════════════════════════════════════════════════
+   FinoMind — Stats Bar (stats.css)
+   Glassmorphism/Solid stats section with animated counters
+   Positioned on the white page background below the hero frame.
+   ═══════════════════════════════════════════════════════════ */
+
+.stats-section {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 48px auto; /* margin to separate from the hero frame block */
+  padding: 0 var(--container-pad);
+}
+
+.stats-bar {
+  background: var(--navy); /* Solid dark navy for high-contrast on white background */
+  border: 1px solid rgba(0, 174, 239, 0.2);
+  border-radius: 24px;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  box-shadow: 
+    0 20px 45px rgba(10, 34, 64, 0.18), 
+    0 0 30px rgba(0, 174, 239, 0.05);
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Vertical dividers */
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -16px;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 174, 239, 0.22),
+    transparent
+  );
+}
+
+.stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 174, 239, 0.3);
+  background: rgba(0, 174, 239, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  color: var(--cyan);
+  transition: transform 0.3s var(--ease-spring), border-color 0.3s ease;
+}
+
+.stat-item:hover .stat-icon {
+  transform: scale(1.1);
+  border-color: var(--cyan);
+}
+
+.stat-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--cyan);
+}
+
+.stat-value {
+  font-family: var(--font-display); /* Playfair Display */
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-value .stat-suffix {
+  color: var(--cyan);
+  font-size: 0.8em;
+}
+
+.stat-label {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 968px) {
+  .stats-section {
+    margin: 24px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 28px 24px;
+    gap: 28px;
+    border-radius: 20px;
+  }
+
+  .stat-item:nth-child(2)::after {
+    display: none;
+  }
+
+  .stat-item:nth-child(odd)::after {
+    right: -14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-bar {
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 16px;
+    gap: 20px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+
+  .stat-item::after {
+    display: none;
+  }
+  
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+  }
+  
+  .stat-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}

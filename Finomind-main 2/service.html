@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pillars of Establishment | FinoMind Services</title>
+    <!-- Import Google Fonts: Playfair Display (Luxury Serif) & Inter (Modern Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style2.css">
+    <style>
+        /* ================= FOOTER (FinoMind reusable component) ================= */
+        :root{
+            --cyan:#00AEEF;
+            --teal:#007B9E;
+            --dark-teal:#1A5276;
+            --cloud-cyan:#E0F7FC;
+            --off-white:#F7FAFB;
+            --charcoal:#2C3E50;
+            --slate:#4A6274;
+            --orange:#FF6B35;
+        }
+
+        #site-footer{
+            background:#131824;
+            width:100vw;
+            position:relative;
+            left:50%;
+            right:50%;
+            margin-left:-50vw;
+            margin-right:-50vw;
+            border-radius:0;
+            padding:64px 48px 28px;
+            color:rgba(255,255,255,0.65);
+            font-family:'Inter',sans-serif;
+            box-sizing:border-box;
+        }
+        #site-footer *{ box-sizing:border-box; }
+
+        #footer-top{
+            display:flex;
+            justify-content:space-between;
+            gap:40px;
+            flex-wrap:wrap;
+            padding-bottom:48px;
+        }
+
+        #footer-brand{ max-width:320px; }
+
+        .footer-logo-img{
+            height:40px;
+            width:auto;
+            display:block;
+            margin:0 0 18px;
+        }
+
+        .footer-logo{
+            font-family:'Playfair Display',serif;
+            font-weight:600;
+            font-size:26px;
+            color:#fff;
+            margin:0 0 18px;
+            letter-spacing:-0.01em;
+        }
+        .footer-logo span{ color:var(--cyan); }
+
+        .footer-tagline{
+            font-size:14px;
+            line-height:1.7;
+            color:rgba(255,255,255,0.55);
+            margin:0;
+        }
+
+        #footer-links{
+            display:flex;
+            gap:80px;
+            flex-wrap:wrap;
+        }
+
+        .footer-col h4{
+            font-size:13px;
+            font-weight:700;
+            letter-spacing:0.14em;
+            text-transform:uppercase;
+            color:#fff;
+            margin:0 0 22px;
+        }
+
+        .footer-col ul{
+            list-style:none;
+            margin:0;
+            padding:0;
+            display:flex;
+            flex-direction:column;
+            gap:14px;
+        }
+
+        .footer-col ul li a{
+            color:rgba(255,255,255,0.6);
+            text-decoration:none;
+            font-size:14.5px;
+            transition:color .2s ease;
+        }
+
+        .footer-col ul li a:hover{ color:var(--cyan); }
+        .footer-col ul li a.highlight{ color:var(--cyan); }
+
+        #footer-bottom{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            gap:16px;
+            padding-top:26px;
+            border-top:1px solid rgba(255,255,255,0.09);
+        }
+
+        #footer-bottom p{
+            margin:0;
+            font-size:13.5px;
+            color:rgba(255,255,255,0.45);
+        }
+
+        #footer-social{
+            display:flex;
+            gap:12px;
+        }
+
+        #footer-social a{
+            width:38px;
+            height:38px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.06);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:rgba(255,255,255,0.75);
+            transition:background .2s ease, color .2s ease;
+        }
+        #footer-social a:hover{ background:var(--cyan); color:#131824; }
+        #footer-social svg{ width:17px; height:17px; }
+
+        @media (max-width:900px){
+            #site-footer{ width:100vw; padding:48px 24px 24px; border-radius:0; }
+            #footer-links{ gap:40px; }
+            #footer-bottom{ flex-direction:column; align-items:flex-start; }
+        }
+
+        /* ================= HOME / HERO SECTION (FinoMind reusable component) ================= */
+        #hero{
+            background:linear-gradient(to right, rgba(26,82,117,1) 0%, #165d93 22%, rgba(26,82,117,1) 100%);
+            min-height: 80vh;
+            height: auto;
+            width: 98%;
+            border-radius: 18px;
+            margin:15px 10px;
+            position:relative;
+            overflow:hidden;
+            display:flex;
+            align-items:center;
+            font-family:'Inter',sans-serif;
+        }
+
+        #notch{
+            position:absolute;
+            top:0;
+            left:50%;
+            transform:translateX(-50%);
+            width:600px;
+            height:50px;
+            background:#fff;
+            border-radius:0 0 28px 28px;
+        }
+
+        #notch::before{
+            content:"";
+            position:absolute;
+            left:-28px;
+            top:0px;
+            width:28px;
+            height:28px;
+            border-top-right-radius:28px;
+            box-shadow:14px -14px 0 14px #fff;
+        }
+
+        #notch::after{
+            content:"";
+            position:absolute;
+            right:-28px;
+            top:0;
+            width:28px;
+            height:28px;
+            border-top-left-radius:28px;
+            box-shadow:-14px -14px 0 14px #fff;
+        }
+
+        #notch ul{
+            display: flex;
+            align-items:center;
+            justify-content:center;
+            gap: 35px;
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+
+        #notch ul li{
+            list-style-type: none;
+            margin-left: 0px;
+            margin-top: 0px;
+            font-size: 15px;
+            font-weight:600;
+            font-family:'Inter',sans-serif;
+            color:var(--charcoal);
+            cursor:pointer;
+            transition:color .2s ease, opacity .2s ease;
+        }
+
+        #notch ul li:hover{
+            color:var(--dark-teal);
+        }
+
+        #notch ul li.active{
+            color:var(--dark-teal);
+        }
+
+        #notch ul li img{
+            width: 100px;
+            height: auto;
+            margin-top: 0px;
+            display:block;
+        }
+
+        #hero-content{
+            position:relative;
+            z-index:5;
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-end;
+            width:100%;
+            padding:80px 24px 40px;
+            gap:90px;
+            height: 100%;
+        }
+
+        #hero-text{
+            width:58%;
+        }
+
+        #hero .eyebrow{
+            font-size:13px;
+            font-weight:600;
+            letter-spacing:0.22em;
+            text-transform:uppercase;
+            color:var(--cyan);
+            margin-bottom:20px;
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+        #hero .eyebrow::before{
+            content:'';
+            width:22px;
+            height:1px;
+            background:var(--cyan);
+            display:inline-block;
+        }
+
+        #hero .headline{
+            font-family:'Playfair Display',serif;
+            font-weight:600;
+            font-size:clamp(38px, 4.6vw, 60px);
+            line-height:1.1;
+            color:#fff;
+            letter-spacing:-0.015em;
+            margin:0 0 22px;
+        }
+
+        #hero .headline em{
+            font-style:normal;
+            font-weight:600;
+            color:var(--dark-teal);
+            background:#fff;
+            padding:2px 14px;
+            border-radius:8px;
+            display:inline-block;
+        }
+
+        #hero .subtext{
+            font-size:15px;
+            line-height:1.65;
+            color:rgba(255,255,255,0.8);
+            max-width:440px;
+            margin:0 0 32px;
+        }
+
+        #hero .cta{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            background:#FF6B35;
+            color:#fff;
+            text-decoration:none;
+            font-size:15px;
+            font-weight:600;
+            padding:15px 30px;
+            border-radius:999px;
+            transition:background .25s ease, transform .25s ease;
+        }
+        #hero .cta:hover{background:#FF8555; transform:translateY(-1px);}
+        #hero .cta svg{width:16px;height:16px;transition:transform .25s ease;}
+        #hero .cta:hover svg{transform:translateX(3px);}
+
+        #hero-image{
+            position:relative;
+            flex-shrink:0;
+            justify-content:center;
+            height:calc(100% - 30px);
+            width:50%;
+            overflow:hidden;
+            display:flex;
+            align-items:flex-end;
+            height:100%;
+            margin-bottom:-68px;
+            margin-left: 0px;
+        }
+
+        .hero-photo{
+            position:relative;
+            z-index:1;
+            display:block;
+            width:auto;
+            height:100%;
+            max-width:100%;
+            overflow:visible;
+            object-fit: cover;
+            filter:drop-shadow(0 20px 28px rgba(0,0,0,0.3));
+        }
+
+        @media (max-width: 900px){
+            #hero{height:auto; min-height:520px; margin:10px auto; width:96%;}
+            #notch{width:92%; max-width:420px; height:44px;}
+            #notch ul{gap:14px;}
+            #notch ul li{font-size:12px;}
+            #notch ul li img{width:70px;}
+            #notch ul li.active{padding:4px 10px;}
+            #hero-content{
+                flex-direction:column;
+                text-align:center;
+                padding:70px 24px 40px;
+            }
+            #hero-text{max-width:100%;}
+            #hero .subtext{margin-left:auto;margin-right:auto;}
+            #hero .eyebrow{justify-content:center;}
+            #hero-image{margin-top:20px; margin-bottom:0; height:auto;}
+            .hero-photo{width:260px; height:auto;}
+        }
+    </style>
+</head>
+<body>
+    <!-- ================= HOME / HERO SECTION ================= -->
+    <div id="hero">
+        <div id="notch">
+            <ul>
+                <li><a href="index.html" style="color: inherit; text-decoration: none;">Home</a></li>
+                <li class="active"><a href="service.html" style="color: inherit; text-decoration: none;">Services</a></li>
+                <li>
+                    <a href="index.html" style="color: inherit; text-decoration: none;"><img src="./hub-center.png" alt="FinoMind"></a>
+                </li>
+                <li><a href="about-us.html" style="color: inherit; text-decoration: none;">About Us</a></li>
+                <li><a href="guide.html" style="color: inherit; text-decoration: none;">Guide</a></li>
+            </ul>
+        </div>
+
+        <div id="hero-content">
+            <div id="hero-image">
+                <!-- PLACEHOLDER: replace with your advisor image -->
+                <img class="hero-photo" src="./ChatGPT Image Jul 2, 2026, 11_32_20 AM.png" alt="FinoMind advisor">
+            </div>
+            <div id="hero-text">
+                <div class="eyebrow">Services</div>
+                <h1 class="headline">Guidance for<br>every <em>chapter.</em></h1>
+                <p class="subtext">From property to pension — advice that grows with your life in Germany.</p>
+                <a href="#" class="cta">Explore services
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+  <!--<div id="service">
+          <div id="heading">
+        <h1>Pillars of <span>Establishment</span> </h1>
+        <h4>Six domains of discrete , independent counsel fo the discerning elite </h4>
+     </div>
+     <div id="center">
+        <div id="first">
+            <div id="num"></div>
+            <div id="icon"><img src="./mortgage.png" alt=""></div>
+            <div id="con">
+                <h3>Real Estate</h3>
+                <p>Strategic acquisition and tax structuring for primary residence and commercial holdings within the Eurozone.</p>
+            </div>
+            <div id="img">
+                <img src="./premium_photo-1661776260388-f5d1b14ce8a2.avif" alt="">
+            </div>
+            <div id="card"></div>
+        </div>
+        <div id="second">
+            <div id="num"></div>
+            <div id="icon"><img src="./gdp.png" alt=""></div>
+            <div id="con">
+                <h3>Wealth concierge</h3>
+                <p>A holistic approach to managing your global financial ecosystem with the precision of a family office.</p>
+            </div>
+            <div id="img">
+                <img src="./premium_photo-1661776260388-f5d1b14ce8a2.avif" alt="">
+            </div>
+            <div id="card"></div>
+        </div>
+        <div id="third">
+            <div id="num"></div>
+            <div id="icon">
+                <img src="./transferring.png" alt="">
+            </div>
+            <div id="con">
+                <h3>Legacy Planning</h3>
+                <p>Sophisticated retirement and succession strategies desgined to preserve capital across generations</p>
+            </div>
+            <div id="img">
+                <img src="./istockphoto-1344392633-612x612.webp" alt="">
+            </div>
+            <div id="card"></div>
+        </div>
+        <div id="fourth">
+            <div id="num"></div>
+            <div id="icon">
+                <img src="./investment.png" alt="">
+            </div>
+            <div id="con">
+                <h3>capital strategy</h3>
+                <p>Disciplined ,high-conviction investment portfolios tailored to your unique risk appetite and timeline.</p>
+            </div>
+            <div id="img">
+                <img src="./istockphoto-2196729209-612x612.webp" alt="">
+            </div>
+            <div id="card"></div>
+        </div>
+        <div id="fifth"><div id="num"></div>
+            <div id="icon">
+                <img src="./assets.png" alt="">
+            </div>
+            <div id="con">
+                <h3>Asset protection</h3>
+                <p>Uncompromising defensive structures for your health , income, and global liability exposures</p>
+            </div>
+            <div id="img"><img src="./istockphoto-2158808037-612x612.webp" alt=""></div>
+            <div id="card"></div></div>
+        <div id="sixth">
+            <div id="num"></div>
+            <div id="icon">
+                <img src="./bridge.png" alt="">
+            </div>
+            <div id="con">
+                <h3>The continental Bridge</h3>
+                <p>Seamlessly integrating your indian heritage assets with your german financial future</p>
+            </div>
+            <div id="img"><img src="./istockphoto-1212569838-612x612.webp" alt=""></div>
+            <div id="card"></div>
+        </div>
+     </div>
+    </div>
+     -->  
+    <div id="service">
+        <div id="heading">
+            <h1>Pillars of <span>Establishment</span> </h1>
+            <h4>Six domains of discrete , independent counsel fo the discerning elite </h4>
+        </div>
+         
+         <div id="center">
+
+    <div class="card-outer">
+        <div class="num-float">01</div>
+        <a href="service-detail.html?service=real-estate" class="card-link">
+            <div id="first">
+                <div id="icon"><img src="./mortgage.png" alt=""></div>
+                <div id="con">
+                    <h3>Real Estate</h3>
+                    <p>Strategic acquisition and tax structuring for primary residence and commercial holdings within the Eurozone.</p>
+                </div>
+                <div id="img">
+                    <img src="./3D_isometric_illustration_of_a_202606300755.jpeg" alt="">
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="card-outer">
+        <div class="num-float">02</div>
+        <a href="service-detail.html?service=wealth-concierge" class="card-link">
+            <div id="second">
+                <div id="icon"><img src="./gdp.png" alt=""></div>
+                <div id="con">
+                    <h3>Wealth concierge</h3>
+                    <p>A holistic approach to managing your global financial ecosystem with the precision of a family office.</p>
+                </div>
+                <div id="img">
+                    <img src="./3D_isometric_illustration_of_a_202606300809.jpeg" alt="">
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="card-outer">
+        <div class="num-float">03</div>
+        <a href="service-detail.html?service=legacy-planning" class="card-link">
+            <div id="third">
+                <div id="icon"><img src="./transferring.png" alt=""></div>
+                <div id="con">
+                    <h3>Legacy Planning</h3>
+                    <p>Sophisticated retirement and succession strategies designed to preserve capital across generations</p>
+                </div>
+                <div id="img">
+                    <img src="./3D_isometric_illustration_of_an_202606300810.jpeg" alt="">
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="card-outer">
+        <div class="num-float">04</div>
+        <a href="service-detail.html?service=capital-strategy" class="card-link">
+            <div id="fourth">
+                <div id="icon"><img src="./investment.png" alt=""></div>
+                <div id="con">
+                    <h3>capital strategy</h3>
+                    <p>Disciplined, high-conviction investment portfolios tailored to your unique risk appetite and timeline.</p>
+                </div>
+                <div id="img">
+                    <img src="./3D_isometric_illustration_of_a_202606300811.jpeg" alt="">
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="card-outer">
+        <div class="num-float">05</div>
+        <a href="service-detail.html?service=asset-protection" class="card-link">
+            <div id="fifth">
+                <div id="icon"><img src="./assets.png" alt=""></div>
+                <div id="con">
+                    <h3>Asset protection</h3>
+                    <p>Uncompromising defensive structures for your health, income, and global liability exposures</p>
+                </div>
+                <div id="img"><img src="./3D_isometric_illustration_of_a_202606300813.jpeg" alt=""></div>
+            </div>
+        </a>
+    </div>
+
+    <div class="card-outer">
+        <div class="num-float">06</div>
+        <a href="service-detail.html?service=continental-bridge" class="card-link">
+            <div id="sixth">
+                <div id="icon"><img src="./bridge.png" alt=""></div>
+                <div id="con">
+                    <h3>The continental Bridge</h3>
+                    <p>Seamlessly integrating your indian heritage assets with your german financial future</p>
+                </div>
+                <div id="img"><img src="./3D_isometric_illustration_of_two_202606300813.jpeg" alt=""></div>
+            </div>
+        </a>
+    </div>
+
+</div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="site-footer">
+        <div id="footer-top">
+            <div id="footer-brand">
+                <img src="./hub-center.png" alt="FinoMind logo" class="footer-logo-img">
+                <p class="footer-tagline">Smart Wealth, Clear Direction.<br>Germany's premier financial advisory for the Indian community in Europe.</p>
+            </div>
+
+            <div id="footer-links">
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Real Estate Investment</a></li>
+                        <li><a href="#">ALLFinance+</a></li>
+                        <li><a href="#">Tax &amp; Retirement</a></li>
+                        <li><a href="#" class="highlight">Fund &amp; ETF Strategy</a></li>
+                        <li><a href="#">Insurance &amp; Protection</a></li>
+                        <li><a href="#">India &harr; Germany Bridge</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Why FinoMind</a></li>
+                        <li><a href="#">Our Process</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:hello@finomind.de">hello@finomind.de</a></li>
+                        <li><a href="#">Frankfurt, Germany</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Impressum</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-bottom">
+            <p>&copy; 2025 FinoMind GmbH. All rights reserved. Registered in Germany.</p>
+            <div id="footer-social">
+                <a href="#" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.12 1 2.49 1s2.49 1.12 2.49 2.5zM.24 8.25h4.5V23H.24V8.25zM8.02 8.25h4.31v2.01h.06c.6-1.14 2.07-2.34 4.26-2.34 4.55 0 5.39 3 5.39 6.9V23h-4.5v-6.88c0-1.64-.03-3.75-2.29-3.75-2.29 0-2.64 1.79-2.64 3.63V23h-4.5V8.25z"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.44 4.83c-.8.36-1.67.6-2.58.71a4.5 4.5 0 0 0 1.98-2.48 9 9 0 0 1-2.85 1.09 4.48 4.48 0 0 0-7.64 4.09A12.72 12.72 0 0 1 3.03 3.6a4.48 4.48 0 0 0 1.39 5.98c-.73-.02-1.42-.22-2.02-.56v.06a4.48 4.48 0 0 0 3.6 4.4 4.5 4.5 0 0 1-2.02.08 4.49 4.49 0 0 0 4.19 3.12A9 9 0 0 1 1 19.54a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.78 0-.2 0-.39-.01-.58a9.14 9.14 0 0 0 2.24-2.32z"/></svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.87 5.87 0 0 0-2.13 1.38A5.87 5.87 0 0 0 .63 4.14c-.3.76-.5 1.63-.56 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.13-1.38 5.87 5.87 0 0 0 1.38-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.38-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.41-10.4a1.44 1.44 0 1 1-1.44-1.44 1.44 1.44 0 0 1 1.44 1.44z"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.6 15.5v-7l6.24 3.5-6.24 3.5z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
