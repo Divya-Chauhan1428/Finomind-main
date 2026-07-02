@@ -35,6 +35,12 @@
 </head>
 
 <body class="fm-preloader-active">
+  <script>
+    // Prevent browser from instantly jumping to anchor on page load
+    if (window.location.hash === '#services') {
+      window.scrollTo(0, 0);
+    }
+  </script>
 
   <!-- ════════════════════════════════════════════════════════
      PRELOADER — plays once per session
@@ -231,6 +237,9 @@
     </div>
   </section>
 
+
+  <!-- Services section anchor target with scroll margin for fixed navigation bar -->
+  <div id="services" style="position: relative; scroll-margin-top: 92px;"></div>
 
   <!-- ════════════════════════════════════════════════════════
      SERVICES RADIAL HUB
@@ -522,6 +531,47 @@
   <script src="js/navbar.js" defer></script>
   <script src="js/services-hub.js" defer></script>
   <script src="js/animations.js" defer></script>
+
+  <script>
+    // Smooth scroll to services section if coming from another page
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.location.hash === '#services') {
+        const target = document.getElementById('services');
+        if (target) {
+          const scrollToServices = () => {
+            setTimeout(() => {
+              const navbarHeight = 72; // height of fixed navbar
+              const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+              const offsetPosition = targetPosition - navbarHeight - 20; // 20px extra breathing room
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }, 100);
+          };
+
+          const preloader = document.getElementById('fm-preloader');
+          if (preloader) {
+            // Set up MutationObserver to scroll once preloader is removed from DOM
+            const observer = new MutationObserver((mutations) => {
+              mutations.forEach((mutation) => {
+                mutation.removedNodes.forEach((node) => {
+                  if (node === preloader || node.id === 'fm-preloader') {
+                    observer.disconnect();
+                    scrollToServices();
+                  }
+                });
+              });
+            });
+            observer.observe(preloader.parentNode || document.body, { childList: true });
+          } else {
+            // Preloader already removed or skipped
+            scrollToServices();
+          }
+        }
+      }
+    });
+  </script>
 
 </body>
 
