@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FinoMind — About Us</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+  rel="stylesheet" />
 <style>
     :root{
         --cyan:#00AEEF;
@@ -22,11 +25,13 @@
 
     body{
         height: auto;
-        width: 99%;
+        width: 100%;
         margin:0;
-        font-family:'Inter',sans-serif;
+        font-family:'Inter', system-ui, -apple-system, sans-serif;
         background:var(--off-white);
         color:var(--charcoal);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     /* ================= HERO ================= */
@@ -49,7 +54,7 @@
         transform:translateX(-50%);
         width:600px;
         height:50px;
-        background:#fff;
+        background:#F7FAFB;
         border-radius:0 0 28px 28px;
         z-index:10;
     }
@@ -62,7 +67,7 @@
         width:28px;
         height:28px;
         border-top-right-radius:28px;
-        box-shadow:14px -14px 0 14px #fff;
+        box-shadow:14px -14px 0 14px #F7FAFB;
     }
 
     #notch::after{
@@ -73,7 +78,7 @@
         width:28px;
         height:28px;
         border-top-left-radius:28px;
-        box-shadow:-14px -14px 0 14px #fff;
+        box-shadow:-14px -14px 0 14px #F7FAFB;
     }
 
     #notch ul{
@@ -90,16 +95,28 @@
         list-style-type: none;
         margin-left: 0px;
         margin-top: 0px;
-        font-size: 15px;
+        font-size: 14px;
         font-weight:600;
-        font-family:'Inter',sans-serif;
+        font-family:'Inter', system-ui, -apple-system, sans-serif;
         color:var(--charcoal);
         cursor:pointer;
-        transition:color .2s ease, opacity .2s ease;
+        transition:all 0.2s ease;
     }
 
-    #notch ul li:hover{ color:var(--dark-teal); }
-    #notch ul li.active{ color:var(--dark-teal); }
+    #notch ul li:not(:nth-child(3)){
+        padding: 8px 14px;
+        border-radius: 8px;
+    }
+
+    #notch ul li:not(:nth-child(3)):hover{
+        color: var(--teal) !important;
+        background: rgba(0, 123, 158, 0.06);
+    }
+
+    #notch ul li:not(:nth-child(3)).active{
+        color: var(--teal) !important;
+        background: rgba(0, 123, 158, 0.08);
+    }
 
     #notch ul li img{
         width: 100px;
@@ -122,9 +139,9 @@
     #hero-text{ width:55%; }
 
     .eyebrow{
-        font-size:13px;
-        font-weight:600;
-        letter-spacing:0.22em;
+        font-size:11px;
+        font-weight:700;
+        letter-spacing:0.14em;
         text-transform:uppercase;
         color:var(--cyan);
         margin-bottom:20px;
@@ -141,10 +158,10 @@
     }
 
     .headline{
-        font-family:'Playfair Display',serif;
-        font-weight:600;
+        font-family:'Playfair Display', Georgia, serif;
+        font-weight:700;
         font-size:clamp(38px, 4.6vw, 60px);
-        line-height:1.1;
+        line-height:1.15;
         color:#fff;
         letter-spacing:-0.015em;
         margin:0 0 22px;
@@ -152,7 +169,7 @@
 
     .headline em{
         font-style:normal;
-        font-weight:600;
+        font-weight:700;
         color:var(--dark-teal);
         background:#fff;
         padding:2px 14px;
@@ -161,8 +178,8 @@
     }
 
     .subtext{
-        font-size:15px;
-        line-height:1.65;
+        font-size:16px;
+        line-height:1.8;
         color:rgba(255,255,255,0.8);
         max-width:440px;
         margin:0 0 32px;
@@ -219,9 +236,9 @@
     }
 
     .section-eyebrow{
-        font-size:13px;
-        font-weight:600;
-        letter-spacing:0.22em;
+        font-size:11px;
+        font-weight:700;
+        letter-spacing:0.14em;
         text-transform:uppercase;
         color:var(--teal);
         margin-bottom:18px;
@@ -238,12 +255,11 @@
     }
 
     .section-headline{
-        font-family:'Playfair Display',serif;
-        font-weight:600;
+        font-family:'Playfair Display', Georgia, serif;
+        font-weight:700;
         font-size:clamp(30px, 3.4vw, 44px);
-        line-height:1.18;
+        line-height:1.2;
         color:var(--dark-teal);
-        letter-spacing:-0.01em;
         margin:0 0 20px;
         max-width:640px;
     }
@@ -261,7 +277,7 @@
 
     #story-text p{
         font-size:16px;
-        line-height:1.75;
+        line-height:1.7;
         color:var(--slate);
         margin:0 0 18px;
     }
@@ -306,9 +322,9 @@
     }
 
     .value-number{
-        font-family:'Playfair Display',serif;
+        font-family:'Playfair Display', Georgia, serif;
         font-size:15px;
-        font-weight:600;
+        font-weight:700;
         color:var(--cyan);
         margin-bottom:18px;
     }
@@ -344,9 +360,9 @@
     }
 
     .stat-number{
-        font-family:'Playfair Display',serif;
+        font-family:'Playfair Display', Georgia, serif;
         font-size:clamp(30px, 3vw, 42px);
-        font-weight:600;
+        font-weight:700;
         color:#fff;
         margin:0 0 8px;
     }
@@ -374,7 +390,7 @@
 
     #diff-text p{
         font-size:16px;
-        line-height:1.75;
+        line-height:1.7;
         color:var(--slate);
     }
 
@@ -412,7 +428,7 @@
 
     .diff-copy p{
         font-size:14.5px;
-        line-height:1.65;
+        line-height:1.6;
         color:var(--slate);
         margin:0;
     }
@@ -467,15 +483,15 @@
     #footer-brand{ max-width:320px; }
 
     .footer-logo-img{
-        height:40px;
+        height:60px;
         width:auto;
         display:block;
         margin:0 0 18px;
     }
 
     .footer-logo{
-        font-family:'Playfair Display',serif;
-        font-weight:600;
+        font-family:'Playfair Display', Georgia, serif;
+        font-weight:700;
         font-size:26px;
         color:#fff;
         margin:0 0 18px;
@@ -497,9 +513,9 @@
     }
 
     .footer-col h4{
-        font-size:13px;
+        font-size:14px;
         font-weight:700;
-        letter-spacing:0.14em;
+        letter-spacing:0.08em;
         text-transform:uppercase;
         color:#fff;
         margin:0 0 22px;
@@ -517,12 +533,11 @@
     .footer-col ul li a{
         color:rgba(255,255,255,0.6);
         text-decoration:none;
-        font-size:14.5px;
+        font-size:14px;
         transition:color .2s ease;
     }
 
     .footer-col ul li a:hover{ color:var(--cyan); }
-    .footer-col ul li a.highlight{ color:var(--cyan); }
 
     #footer-bottom{
         display:flex;
@@ -536,7 +551,7 @@
 
     #footer-bottom p{
         margin:0;
-        font-size:13.5px;
+        font-size:13px;
         color:rgba(255,255,255,0.45);
     }
 
@@ -556,7 +571,7 @@
         color:rgba(255,255,255,0.75);
         transition:background .2s ease, color .2s ease;
     }
-    #footer-social a:hover{ background:var(--cyan); color:#131824; }
+    #footer-social a:hover{ background:rgba(0, 174, 239, 0.15); color:var(--cyan); }
     #footer-social svg{ width:17px; height:17px; }
 
     @media (max-width:900px){
@@ -571,6 +586,7 @@
         #notch{width:92%; max-width:420px; height:44px;}
         #notch ul{gap:14px;}
         #notch ul li{font-size:12px;}
+        #notch ul li:not(:nth-child(3)){padding: 6px 8px;}
         #notch ul li img{width:70px;}
         #hero-content{ flex-direction:column; text-align:center; padding:70px 24px 40px; }
         #hero-text{width:100%; max-width:100%;}
@@ -606,15 +622,13 @@
 
         <div id="hero-content">
             <div id="hero-image">
-                <img class="hero-photo" src="./ChatGPT Image Jul 2, 2026, 09_58_31 AM (1).png" alt="FinoMind advisor">
+                <img class="hero-photo" src="./ChatGPT_Image_Jul_2__2026__08_27_26_PM-removebg-preview.png" alt="FinoMind advisor">
             </div>
             <div id="hero-text">
                 <div class="eyebrow">About Us</div>
                 <h1 class="headline">Trust, <em>translated.</em></h1>
                 <p class="subtext">Independent consultants who speak your language — literally and financially.</p>
-                <a href="#" class="cta">Meet our team
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </a>
+
             </div>
         </div>
     </div>
@@ -638,16 +652,16 @@
                         </linearGradient>
                     </defs>
                     <circle cx="60" cy="60" r="6" fill="#00AEEF"/>
-                    <text x="60" y="40" fill="#ffffff" font-family="Inter" font-size="13" font-weight="600" text-anchor="middle">India</text>
-                    <text x="60" y="90" fill="rgba(255,255,255,0.55)" font-family="Inter" font-size="11" text-anchor="middle">NRE / NRO · DTAA</text>
+                    <text x="60" y="40" fill="#ffffff" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" text-anchor="middle">India</text>
+                    <text x="60" y="90" fill="rgba(255,255,255,0.55)" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">NRE / NRO · DTAA</text>
 
                     <circle cx="340" cy="160" r="6" fill="#FF6B35"/>
-                    <text x="340" y="140" fill="#ffffff" font-family="Inter" font-size="13" font-weight="600" text-anchor="middle">Germany</text>
-                    <text x="340" y="190" fill="rgba(255,255,255,0.55)" font-family="Inter" font-size="11" text-anchor="middle">Elster · Steuerklasse</text>
+                    <text x="340" y="140" fill="#ffffff" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" text-anchor="middle">Germany</text>
+                    <text x="340" y="190" fill="rgba(255,255,255,0.55)" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Elster · Steuerklasse</text>
 
                     <path d="M 60 66 C 140 66, 140 154, 200 110 C 260 66, 260 154, 340 154" stroke="url(#lineGrad)" stroke-width="2.5" fill="none"/>
                     <circle cx="200" cy="110" r="7" fill="#ffffff"/>
-                    <text x="200" y="88" fill="#ffffff" font-family="Playfair Display" font-size="13" font-weight="600" text-anchor="middle">FinoMind</text>
+                    <text x="200" y="88" fill="#ffffff" font-family="'Playfair Display', Georgia, serif" font-size="13" font-weight="600" text-anchor="middle">FinoMind</text>
                 </svg>
                 <p class="visual-caption">One strategy, plotted across both systems — not two advisors working in parallel.</p>
             </div>

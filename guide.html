@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FinoMind — Guide</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+  rel="stylesheet" />
 <style>
     :root{
         --cyan:#00AEEF;
@@ -22,11 +25,13 @@
 
     body{
         height: auto;
-        width: 99%;
+        width: 100%;
         margin:0;
-        font-family:'Inter',sans-serif;
+        font-family:'Inter', system-ui, -apple-system, sans-serif;
         background:var(--off-white);
         color:var(--charcoal);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     /* ================= HERO (unchanged) ================= */
@@ -49,8 +54,9 @@
         transform:translateX(-50%);
         width:600px;
         height:50px;
-        background:#fff;
+        background:#F7FAFB;
         border-radius:0 0 28px 28px;
+        z-index:10;
     }
 
     #notch::before{
@@ -61,7 +67,7 @@
         width:28px;
         height:28px;
         border-top-right-radius:28px;
-        box-shadow:14px -14px 0 14px #fff;
+        box-shadow:14px -14px 0 14px #F7FAFB;
     }
 
     #notch::after{
@@ -72,7 +78,7 @@
         width:28px;
         height:28px;
         border-top-left-radius:28px;
-        box-shadow:-14px -14px 0 14px #fff;
+        box-shadow:-14px -14px 0 14px #F7FAFB;
     }
 
     #notch ul{
@@ -89,16 +95,28 @@
         list-style-type: none;
         margin-left: 0px;
         margin-top: 0px;
-        font-size: 15px;
+        font-size: 14px;
         font-weight:600;
-        font-family:'Inter',sans-serif;
+        font-family:'Inter', system-ui, -apple-system, sans-serif;
         color:var(--charcoal);
         cursor:pointer;
-        transition:color .2s ease, opacity .2s ease;
+        transition:all 0.2s ease;
     }
 
-    #notch ul li:hover{ color:var(--dark-teal); }
-    #notch ul li.active{ color:var(--dark-teal); }
+    #notch ul li:not(:nth-child(3)){
+        padding: 8px 14px;
+        border-radius: 8px;
+    }
+
+    #notch ul li:not(:nth-child(3)):hover{
+        color: var(--teal) !important;
+        background: rgba(0, 123, 158, 0.06);
+    }
+
+    #notch ul li:not(:nth-child(3)).active{
+        color: var(--teal) !important;
+        background: rgba(0, 123, 158, 0.08);
+    }
 
     #notch ul li img{
         width: 100px;
@@ -121,9 +139,9 @@
     #hero-text{ width:56%; }
 
     .eyebrow{
-        font-size:13px;
-        font-weight:600;
-        letter-spacing:0.22em;
+        font-size:11px;
+        font-weight:700;
+        letter-spacing:0.14em;
         text-transform:uppercase;
         color:var(--cyan);
         margin-bottom:20px;
@@ -140,10 +158,10 @@
     }
 
     .headline{
-        font-family:'Playfair Display',serif;
-        font-weight:600;
+        font-family:'Playfair Display', Georgia, serif;
+        font-weight:700;
         font-size:clamp(38px, 4.6vw, 60px);
-        line-height:1.3;
+        line-height:1.15;
         color:#fff;
         letter-spacing:-0.015em;
         margin:0 0 22px;
@@ -151,7 +169,7 @@
 
     .headline em{
         font-style:normal;
-        font-weight:600;
+        font-weight:700;
         color:var(--dark-teal);
         background:#fff;
         padding:2px 14px;
@@ -160,8 +178,8 @@
     }
 
     .subtext{
-        font-size:15px;
-        line-height:1.65;
+        font-size:16px;
+        line-height:1.8;
         color:rgba(255,255,255,0.8);
         max-width:440px;
         margin:0 0 32px;
@@ -201,7 +219,7 @@
         position:relative;
         z-index:1;
         width:90%;
-        height:auto;
+        height:65vh;
         object-fit:contain;
         filter:drop-shadow(0 20px 28px rgba(0,0,0,0.3));
     }
@@ -214,9 +232,9 @@
     }
 
     .section-eyebrow{
-        font-size:13px;
-        font-weight:600;
-        letter-spacing:0.22em;
+        font-size:11px;
+        font-weight:700;
+        letter-spacing:0.14em;
         text-transform:uppercase;
         color:var(--teal);
         margin-bottom:18px;
@@ -233,12 +251,11 @@
     }
 
     .section-headline{
-        font-family:'Playfair Display',serif;
-        font-weight:600;
+        font-family:'Playfair Display', Georgia, serif;
+        font-weight:700;
         font-size:clamp(30px, 3.4vw, 44px);
-        line-height:1.18;
+        line-height:1.2;
         color:var(--dark-teal);
-        letter-spacing:-0.01em;
         margin:0 0 20px;
         max-width:640px;
     }
@@ -272,7 +289,7 @@
         flex:1;
         border:none;
         outline:none;
-        font-family:'Inter',sans-serif;
+        font-family:'Inter', system-ui, -apple-system, sans-serif;
         font-size:15px;
         color:var(--charcoal);
         background:transparent;
@@ -398,9 +415,9 @@
     .guide-left{ display:flex; align-items:center; gap:20px; }
 
     .guide-index{
-        font-family:'Playfair Display',serif;
+        font-family:'Playfair Display', Georgia, serif;
         font-size:20px;
-        font-weight:600;
+        font-weight:700;
         color:var(--cyan);
         width:32px;
     }
@@ -419,7 +436,7 @@
     }
 
     .guide-title{
-        font-size:15.5px;
+        font-size:16px;
         font-weight:700;
         color:var(--charcoal);
         margin:0;
@@ -442,7 +459,7 @@
 
     #faq-text p{
         font-size:15.5px;
-        line-height:1.75;
+        line-height:1.7;
         color:var(--slate);
     }
 
@@ -521,8 +538,8 @@
         #notch{width:92%; max-width:420px; height:44px;}
         #notch ul{gap:14px;}
         #notch ul li{font-size:12px;}
+        #notch ul li:not(:nth-child(3)){padding: 6px 8px;}
         #notch ul li img{width:70px;}
-        #notch ul li.active{padding:4px 10px;}
         #hero-content{ flex-direction:column; text-align:center; padding:70px 24px 40px; }
         #hero-text{width:100%; max-width:100%;}
         .subtext{margin-left:auto;margin-right:auto;}
@@ -562,15 +579,15 @@
     #footer-brand{ max-width:320px; }
 
     .footer-logo-img{
-        height:40px;
+        height:60px;
         width:auto;
         display:block;
         margin:0 0 18px;
     }
 
     .footer-logo{
-        font-family:'Playfair Display',serif;
-        font-weight:600;
+        font-family:'Playfair Display', Georgia, serif;
+        font-weight:700;
         font-size:26px;
         color:#fff;
         margin:0 0 18px;
@@ -592,9 +609,9 @@
     }
 
     .footer-col h4{
-        font-size:13px;
+        font-size:14px;
         font-weight:700;
-        letter-spacing:0.14em;
+        letter-spacing:0.08em;
         text-transform:uppercase;
         color:#fff;
         margin:0 0 22px;
@@ -612,12 +629,11 @@
     .footer-col ul li a{
         color:rgba(255,255,255,0.6);
         text-decoration:none;
-        font-size:14.5px;
+        font-size:14px;
         transition:color .2s ease;
     }
 
     .footer-col ul li a:hover{ color:var(--cyan); }
-    .footer-col ul li a.highlight{ color:var(--cyan); }
 
     #footer-bottom{
         display:flex;
@@ -631,7 +647,7 @@
 
     #footer-bottom p{
         margin:0;
-        font-size:13.5px;
+        font-size:13px;
         color:rgba(255,255,255,0.45);
     }
 
@@ -651,7 +667,7 @@
         color:rgba(255,255,255,0.75);
         transition:background .2s ease, color .2s ease;
     }
-    #footer-social a:hover{ background:var(--cyan); color:#131824; }
+    #footer-social a:hover{ background:rgba(0, 174, 239, 0.15); color:var(--cyan); }
     #footer-social svg{ width:17px; height:17px; }
 
     @media (max-width:900px){
@@ -679,15 +695,13 @@
 
         <div id="hero-content">
             <div id="hero-image">
-                <img class="hero-photo" src="./ChatGPT Image Jul 2, 2026, 10_19_11 AM (1).png" alt="FinoMind advisor">
+                <img class="hero-photo" src="./ChatGPT_Image_Jul_2__2026__08_31_38_PM-removebg-preview.png" alt="FinoMind advisor">
             </div>
             <div id="hero-text">
                 <div class="eyebrow">Guide</div>
                 <h1 class="headline">Made easy,<br>made for <em>you.</em></h1>
                 <p class="subtext">No confusion, no jargon — just guidance that makes sense.</p>
-                <a href="#" class="cta">Explore guide
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </a>
+
             </div>
         </div>
     </div>

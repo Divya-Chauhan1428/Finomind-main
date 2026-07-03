@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pillars of Establishment | FinoMind Services</title>
     <!-- Import Google Fonts: Playfair Display (Luxury Serif) & Inter (Modern Sans-serif) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="./style2.css">
     <style>
         /* ================= FOOTER (FinoMind reusable component) ================= */
@@ -33,7 +35,7 @@
             border-radius:0;
             padding:64px 48px 28px;
             color:rgba(255,255,255,0.65);
-            font-family:'Inter',sans-serif;
+            font-family:'Inter', system-ui, -apple-system, sans-serif;
             box-sizing:border-box;
         }
         #site-footer *{ box-sizing:border-box; }
@@ -49,15 +51,15 @@
         #footer-brand{ max-width:320px; }
 
         .footer-logo-img{
-            height:40px;
+            height:60px;
             width:auto;
             display:block;
             margin:0 0 18px;
         }
 
         .footer-logo{
-            font-family:'Playfair Display',serif;
-            font-weight:600;
+            font-family:'Playfair Display', Georgia, serif;
+            font-weight:700;
             font-size:26px;
             color:#fff;
             margin:0 0 18px;
@@ -79,9 +81,9 @@
         }
 
         .footer-col h4{
-            font-size:13px;
+            font-size:14px;
             font-weight:700;
-            letter-spacing:0.14em;
+            letter-spacing:0.08em;
             text-transform:uppercase;
             color:#fff;
             margin:0 0 22px;
@@ -99,12 +101,11 @@
         .footer-col ul li a{
             color:rgba(255,255,255,0.6);
             text-decoration:none;
-            font-size:14.5px;
+            font-size:14px;
             transition:color .2s ease;
         }
 
         .footer-col ul li a:hover{ color:var(--cyan); }
-        .footer-col ul li a.highlight{ color:var(--cyan); }
 
         #footer-bottom{
             display:flex;
@@ -118,7 +119,7 @@
 
         #footer-bottom p{
             margin:0;
-            font-size:13.5px;
+            font-size:13px;
             color:rgba(255,255,255,0.45);
         }
 
@@ -138,7 +139,7 @@
             color:rgba(255,255,255,0.75);
             transition:background .2s ease, color .2s ease;
         }
-        #footer-social a:hover{ background:var(--cyan); color:#131824; }
+        #footer-social a:hover{ background:rgba(0, 174, 239, 0.15); color:var(--cyan); }
         #footer-social svg{ width:17px; height:17px; }
 
         @media (max-width:900px){
@@ -159,7 +160,7 @@
             overflow:hidden;
             display:flex;
             align-items:center;
-            font-family:'Inter',sans-serif;
+            font-family:'Inter', system-ui, -apple-system, sans-serif;
         }
 
         #notch{
@@ -171,6 +172,7 @@
             height:50px;
             background:#fff;
             border-radius:0 0 28px 28px;
+            z-index:10;
         }
 
         #notch::before{
@@ -209,20 +211,27 @@
             list-style-type: none;
             margin-left: 0px;
             margin-top: 0px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight:600;
-            font-family:'Inter',sans-serif;
+            font-family:'Inter', system-ui, -apple-system, sans-serif;
             color:var(--charcoal);
             cursor:pointer;
-            transition:color .2s ease, opacity .2s ease;
+            transition:all 0.2s ease;
         }
 
-        #notch ul li:hover{
-            color:var(--dark-teal);
+        #notch ul li:not(:nth-child(3)){
+            padding: 8px 14px;
+            border-radius: 8px;
         }
 
-        #notch ul li.active{
-            color:var(--dark-teal);
+        #notch ul li:not(:nth-child(3)):hover{
+            color: var(--teal) !important;
+            background: rgba(0, 123, 158, 0.06);
+        }
+
+        #notch ul li:not(:nth-child(3)).active{
+            color: var(--teal) !important;
+            background: rgba(0, 123, 158, 0.08);
         }
 
         #notch ul li img{
@@ -249,9 +258,9 @@
         }
 
         #hero .eyebrow{
-            font-size:13px;
-            font-weight:600;
-            letter-spacing:0.22em;
+            font-size:11px;
+            font-weight:700;
+            letter-spacing:0.14em;
             text-transform:uppercase;
             color:var(--cyan);
             margin-bottom:20px;
@@ -268,10 +277,10 @@
         }
 
         #hero .headline{
-            font-family:'Playfair Display',serif;
-            font-weight:600;
+            font-family:'Playfair Display', Georgia, serif;
+            font-weight:700;
             font-size:clamp(38px, 4.6vw, 60px);
-            line-height:1.1;
+            line-height:1.15;
             color:#fff;
             letter-spacing:-0.015em;
             margin:0 0 22px;
@@ -279,7 +288,7 @@
 
         #hero .headline em{
             font-style:normal;
-            font-weight:600;
+            font-weight:700;
             color:var(--dark-teal);
             background:#fff;
             padding:2px 14px;
@@ -288,8 +297,8 @@
         }
 
         #hero .subtext{
-            font-size:15px;
-            line-height:1.65;
+            font-size:16px;
+            line-height:1.8;
             color:rgba(255,255,255,0.8);
             max-width:440px;
             margin:0 0 32px;
@@ -316,12 +325,12 @@
             position:relative;
             flex-shrink:0;
             justify-content:center;
-            height:calc(100% - 30px);
+            height:calc(100% - 10px);
             width:50%;
             overflow:hidden;
             display:flex;
             align-items:flex-end;
-            height:100%;
+            height:65vh;
             margin-bottom:-68px;
             margin-left: 0px;
         }
@@ -330,11 +339,11 @@
             position:relative;
             z-index:1;
             display:block;
-            width:auto;
-            height:100%;
-            max-width:100%;
+            width:50%;
+            height:65vh;
+            max-width:70%;
             overflow:visible;
-            object-fit: cover;
+            object-fit: contain;
             filter:drop-shadow(0 20px 28px rgba(0,0,0,0.3));
         }
 
@@ -343,8 +352,8 @@
             #notch{width:92%; max-width:420px; height:44px;}
             #notch ul{gap:14px;}
             #notch ul li{font-size:12px;}
+            #notch ul li:not(:nth-child(3)){padding: 6px 8px;}
             #notch ul li img{width:70px;}
-            #notch ul li.active{padding:4px 10px;}
             #hero-content{
                 flex-direction:column;
                 text-align:center;
@@ -355,6 +364,28 @@
             #hero .eyebrow{justify-content:center;}
             #hero-image{margin-top:20px; margin-bottom:0; height:auto;}
             .hero-photo{width:260px; height:auto;}
+        }
+        .card-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--cyan);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 999px;
+            margin-top: 10px;
+            width: fit-content;
+            transition: background 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 174, 239, 0.3);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+        }
+        .card-btn:hover {
+            background: #009ce0;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 174, 239, 0.4);
         }
     </style>
 </head>
@@ -376,15 +407,13 @@
         <div id="hero-content">
             <div id="hero-image">
                 <!-- PLACEHOLDER: replace with your advisor image -->
-                <img class="hero-photo" src="./ChatGPT Image Jul 2, 2026, 11_32_20 AM.png" alt="FinoMind advisor">
+                <img class="hero-photo" src="./WhatsApp_Image_2026-07-02_at_4.24.18_PM-removebg-preview.png" alt="FinoMind advisor">
             </div>
             <div id="hero-text">
                 <div class="eyebrow">Services</div>
                 <h1 class="headline">Guidance for<br>every <em>chapter.</em></h1>
                 <p class="subtext">From property to pension — advice that grows with your life in Germany.</p>
-                <a href="#" class="cta">Explore services
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </a>
+
             </div>
 
         </div>
@@ -490,6 +519,7 @@
                 <div id="con">
                     <h3>Real Estate</h3>
                     <p>Strategic acquisition and tax structuring for primary residence and commercial holdings within the Eurozone.</p>
+                    <span class="card-btn">Know More</span>
                 </div>
                 <div id="img">
                     <img src="./3D_isometric_illustration_of_a_202606300755.jpeg" alt="">
@@ -506,6 +536,7 @@
                 <div id="con">
                     <h3>Wealth concierge</h3>
                     <p>A holistic approach to managing your global financial ecosystem with the precision of a family office.</p>
+                    <span class="card-btn">Know More</span>
                 </div>
                 <div id="img">
                     <img src="./3D_isometric_illustration_of_a_202606300809.jpeg" alt="">
@@ -522,6 +553,7 @@
                 <div id="con">
                     <h3>Legacy Planning</h3>
                     <p>Sophisticated retirement and succession strategies designed to preserve capital across generations</p>
+                    <span class="card-btn">Know More</span>
                 </div>
                 <div id="img">
                     <img src="./3D_isometric_illustration_of_an_202606300810.jpeg" alt="">
@@ -538,6 +570,7 @@
                 <div id="con">
                     <h3>capital strategy</h3>
                     <p>Disciplined, high-conviction investment portfolios tailored to your unique risk appetite and timeline.</p>
+                    <span class="card-btn">Know More</span>
                 </div>
                 <div id="img">
                     <img src="./3D_isometric_illustration_of_a_202606300811.jpeg" alt="">
@@ -554,6 +587,7 @@
                 <div id="con">
                     <h3>Asset protection</h3>
                     <p>Uncompromising defensive structures for your health, income, and global liability exposures</p>
+                    <span class="card-btn">Know More</span>
                 </div>
                 <div id="img"><img src="./3D_isometric_illustration_of_a_202606300813.jpeg" alt=""></div>
             </div>
@@ -568,6 +602,7 @@
                 <div id="con">
                     <h3>The continental Bridge</h3>
                     <p>Seamlessly integrating your indian heritage assets with your german financial future</p>
+                    <span class="card-btn">Know More</span>
                 </div>
                 <div id="img"><img src="./3D_isometric_illustration_of_two_202606300813.jpeg" alt=""></div>
             </div>
