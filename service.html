@@ -153,9 +153,9 @@
             background:linear-gradient(to right, rgba(26,82,117,1) 0%, #165d93 22%, rgba(26,82,117,1) 100%);
             min-height: 80vh;
             height: auto;
-            width: 98%;
-            border-radius: 18px;
-            margin:15px 10px;
+            width: calc(100% - 32px);
+            border-radius: 20px;
+            margin:16px auto;
             position:relative;
             overflow:hidden;
             display:flex;
@@ -205,6 +205,8 @@
             height:100%;
             margin:0;
             padding:0;
+            position: relative;
+            z-index: 1;
         }
 
         #notch ul li{
@@ -245,12 +247,13 @@
             position:relative;
             z-index:5;
             display:flex;
-            justify-content:space-between;
-            align-items:flex-end;
+            justify-content:flex-start;
+            align-items:center;
             width:100%;
-            padding:80px 24px 40px;
-            gap:90px;
-            height: 100%;
+            padding:100px 48px 60px;
+            gap:40px;
+            min-height: 80vh;
+            box-sizing: border-box;
         }
 
         #hero-text{
@@ -324,31 +327,28 @@
         #hero-image{
             position:relative;
             flex-shrink:0;
-            justify-content:center;
-            height:calc(100% - 10px);
-            width:50%;
-            overflow:hidden;
             display:flex;
-            align-items:flex-end;
-            height:65vh;
-            margin-bottom:-68px;
-            margin-left: 0px;
+            align-items:center;
+            justify-content:center;
+            height:auto;
+            width: 44%;
+            overflow:visible;
         }
 
         .hero-photo{
             position:relative;
             z-index:1;
             display:block;
-            width:50%;
-            height:65vh;
-            max-width:70%;
-            overflow:visible;
+            width:90%;
+            max-width:none;
+            height:100%;
             object-fit: contain;
             filter:drop-shadow(0 20px 28px rgba(0,0,0,0.3));
+            max-height: 70vh;
         }
 
         @media (max-width: 900px){
-            #hero{height:auto; min-height:520px; margin:10px auto; width:96%;}
+            #hero{height:auto; min-height:520px; margin:12px auto; width:calc(100% - 24px); border-radius:16px;}
             #notch{width:92%; max-width:420px; height:44px;}
             #notch ul{gap:14px;}
             #notch ul li{font-size:12px;}
@@ -357,13 +357,14 @@
             #hero-content{
                 flex-direction:column;
                 text-align:center;
-                padding:70px 24px 40px;
+                padding:80px 24px 40px;
+                min-height:auto;
             }
-            #hero-text{max-width:100%;}
+            #hero-text{width:100%; max-width:100%;}
             #hero .subtext{margin-left:auto;margin-right:auto;}
             #hero .eyebrow{justify-content:center;}
-            #hero-image{margin-top:20px; margin-bottom:0; height:auto;}
-            .hero-photo{width:260px; height:auto;}
+            #hero-image{margin-top:20px; width:70%; height:auto;}
+            .hero-photo{width:100%; height:auto;}
         }
         .card-btn {
             display: inline-flex;

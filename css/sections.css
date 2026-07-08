@@ -1121,6 +1121,33 @@
 
   .panel-cta:hover .panel-cta-arrow{transform:translateX(2px);}
 
+  /* ---------- PROGRESS BAR ---------- */
+  .panel-progress{
+    display:flex;
+    gap:8px;
+    margin-top:32px;
+  }
+
+  .progress-dot{
+    height:4px;
+    flex:1;
+    border-radius:2px;
+    background:rgba(0,174,239,0.15);
+    overflow:hidden;
+    position:relative;
+  }
+
+  .progress-dot .fill{
+    position:absolute;
+    top:0;left:0;
+    height:100%;
+    width:0%;
+    background:var(--cyan);
+  }
+
+  .progress-dot.done .fill{width:100%;transition:none;}
+  .progress-dot.filling .fill{width:100%;transition:width linear;}
+
 
   @media (max-width:900px){
     .radial-wheel{width:420px;height:420px;}
